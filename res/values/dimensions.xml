@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <dimen name="dMarginTop">25dp</dimen>
+    <dimen name="dHeaderSize">42dp</dimen>
+    <dimen name="dTextSize">20dp</dimen>
+    <dimen name="dMaxPictureWidth">300dp</dimen>
+    <dimen name="dMaxPictureHeight">120dp</dimen>
+    <dimen name="dMinLayoutWidth">450dp</dimen>
+    
+</resources>

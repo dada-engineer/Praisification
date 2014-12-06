@@ -3,5 +3,18 @@
 
     <string name="app_name">Praisification</string>
     <string name="title_person_detail">Person Detail</string>
+    <string name="sDeatilHeader">Visiting </string>
+    <string name="sHostName">Host</string>
+    <string name="sListHeader">Hosts:</string>
+    <string name="sArrival">Arrival:</string>
+    <string name="sLeaving">Leaving:</string>
+    <string name="sDrinks">Drinks:</string>
+    <string name="sFood">Food:</string>
+    <string name="sExtras">Extras:</string>
+    <string name="sDone">Done</string>
+    <string name="sBonus">Bonus:</string>
+    <string name="sThumbnail">Thumbnail</string>
+    <string name="sArrivalTime">Click on the Button</string>
+    <string name="sLeavingTime">Click on the Button</string>
 
 </resources>
