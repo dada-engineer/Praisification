@@ -120,7 +120,7 @@
         android:background="@drawable/textfieldshape"
         android:minHeight="50dp"
         android:minWidth="@dimen/dMinLayoutWidth"
-        android:orientation="vertical" >
+        android:orientation="horizontal" >
 
     </LinearLayout>
 
