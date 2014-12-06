@@ -1,0 +1,8 @@
+*.svg
+*.db
+*.name
+*.apk
+*.iml
+*.class
+out/
+project.properties
