@@ -3,7 +3,7 @@
 
     <string name="app_name">Praisification</string>
     <string name="title_person_detail">Person Detail</string>
-    <string name="sDeatilHeader">Visiting </string>
+    <string name="sDeatilHeader">Visiting</string>
     <string name="sHostName">Host</string>
     <string name="sListHeader">Hosts:</string>
     <string name="sArrival">Arrival:</string>

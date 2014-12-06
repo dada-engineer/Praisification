@@ -8,7 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 
-import de.dada.praisification.dummy.DummyContent;
+import de.dada.praisification.protocol.ProtocolContent;
+import de.dada.praisification.hostlistitem.HostListItem;
 
 /**
  * A list fragment representing a list of People. This fragment
@@ -72,11 +73,11 @@ public class PersonListFragment extends ListFragment {
         super.onCreate(savedInstanceState);
 
         // TODO: replace with a real list adapter.
-        setListAdapter(new ArrayAdapter<DummyContent.DummyItem>(
+        setListAdapter(new ArrayAdapter<HostListItem>(
                 getActivity(),
                 android.R.layout.simple_list_item_activated_1,
                 android.R.id.text1,
-                DummyContent.ITEMS));
+                ProtocolContent.ITEMS));
     }
 
     @Override
@@ -116,7 +117,7 @@ public class PersonListFragment extends ListFragment {
 
         // Notify the active callbacks interface (the activity, if the
         // fragment is attached to one) that an item has been selected.
-        mCallbacks.onItemSelected(DummyContent.ITEMS.get(position).id);
+        mCallbacks.onItemSelected(ProtocolContent.ITEMS.get(position).id);
     }
 
     @Override

@@ -65,7 +65,7 @@ public class PersonListActivity extends Activity
             // adding or replacing the detail fragment using a
             // fragment transaction.
             Bundle arguments = new Bundle();
-            arguments.putString(PersonDetailFragment.ARG_ITEM_ID, id);
+            arguments.putString(PersonDetailFragment.ARG_HOSTNAME, id);
             PersonDetailFragment fragment = new PersonDetailFragment();
             fragment.setArguments(arguments);
             getFragmentManager().beginTransaction()
@@ -76,7 +76,7 @@ public class PersonListActivity extends Activity
             // In single-pane mode, simply start the detail activity
             // for the selected item ID.
             Intent detailIntent = new Intent(this, PersonDetailActivity.class);
-            detailIntent.putExtra(PersonDetailFragment.ARG_ITEM_ID, id);
+            detailIntent.putExtra(PersonDetailFragment.ARG_HOSTNAME, id);
             startActivity(detailIntent);
         }
     }

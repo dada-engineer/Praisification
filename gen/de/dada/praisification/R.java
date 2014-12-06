@@ -10,13 +10,18 @@ package de.dada.praisification;
 public final class R {
     public static final class attr {
     }
+    public static final class color {
+        public static final int lightGreen=0x7f040001;
+        public static final int lightestGreen=0x7f040002;
+        public static final int treeGreen=0x7f040000;
+    }
     public static final class dimen {
-        public static final int dHeaderSize=0x7f040001;
-        public static final int dMarginTop=0x7f040000;
-        public static final int dMaxPictureHeight=0x7f040004;
-        public static final int dMaxPictureWidth=0x7f040003;
-        public static final int dMinLayoutWidth=0x7f040005;
-        public static final int dTextSize=0x7f040002;
+        public static final int dHeaderSize=0x7f050001;
+        public static final int dMarginTop=0x7f050000;
+        public static final int dMaxPictureHeight=0x7f050004;
+        public static final int dMaxPictureWidth=0x7f050003;
+        public static final int dMinLayoutWidth=0x7f050005;
+        public static final int dTextSize=0x7f050002;
     }
     public static final class drawable {
         public static final int background=0x7f020000;
@@ -25,21 +30,23 @@ public final class R {
         public static final int textfieldshape=0x7f020003;
     }
     public static final class id {
-        public static final int arrivalButton=0x7f07000d;
-        public static final int arrivalDateTextView=0x7f070006;
-        public static final int arrivalTextView=0x7f070005;
-        public static final int bonusLayout=0x7f07000c;
-        public static final int detailHeader=0x7f070003;
-        public static final int drinksLayout=0x7f070009;
-        public static final int extrasLayout=0x7f07000b;
-        public static final int foodLayout=0x7f07000a;
-        public static final int host_detail=0x7f070002;
-        public static final int leavingButton=0x7f07000e;
-        public static final int leavingDateTextView=0x7f070008;
-        public static final int leavingTextView=0x7f070007;
-        public static final int person_detail_container=0x7f070000;
-        public static final int person_list=0x7f070001;
-        public static final int thumbnailView=0x7f070004;
+        public static final int arrivalButton=0x7f080010;
+        public static final int arrivalDateTextView=0x7f080006;
+        public static final int arrivalTextView=0x7f080005;
+        public static final int bonusLayout=0x7f08000d;
+        public static final int bonusTextView=0x7f08000e;
+        public static final int detailHeader=0x7f080003;
+        public static final int drinksLayout=0x7f08000a;
+        public static final int extrasLayout=0x7f08000c;
+        public static final int foodLayout=0x7f08000b;
+        public static final int host_detail=0x7f080002;
+        public static final int leavingButton=0x7f080009;
+        public static final int leavingDateTextView=0x7f080008;
+        public static final int leavingTextView=0x7f080007;
+        public static final int person_detail_container=0x7f080000;
+        public static final int person_list=0x7f080001;
+        public static final int ratingBar=0x7f08000f;
+        public static final int thumbnailView=0x7f080004;
     }
     public static final class layout {
         public static final int activity_person_detail=0x7f030000;
@@ -63,21 +70,21 @@ public final class R {
         public static final int fragment_person_detail=0x7f030003;
     }
     public static final class string {
-        public static final int app_name=0x7f050000;
-        public static final int sArrival=0x7f050005;
-        public static final int sArrivalTime=0x7f05000d;
-        public static final int sBonus=0x7f05000b;
-        public static final int sDeatilHeader=0x7f050002;
-        public static final int sDone=0x7f05000a;
-        public static final int sDrinks=0x7f050007;
-        public static final int sExtras=0x7f050009;
-        public static final int sFood=0x7f050008;
-        public static final int sHostName=0x7f050003;
-        public static final int sLeaving=0x7f050006;
-        public static final int sLeavingTime=0x7f05000e;
-        public static final int sListHeader=0x7f050004;
-        public static final int sThumbnail=0x7f05000c;
-        public static final int title_person_detail=0x7f050001;
+        public static final int app_name=0x7f060000;
+        public static final int sArrival=0x7f060005;
+        public static final int sArrivalTime=0x7f06000d;
+        public static final int sBonus=0x7f06000b;
+        public static final int sDeatilHeader=0x7f060002;
+        public static final int sDone=0x7f06000a;
+        public static final int sDrinks=0x7f060007;
+        public static final int sExtras=0x7f060009;
+        public static final int sFood=0x7f060008;
+        public static final int sHostName=0x7f060003;
+        public static final int sLeaving=0x7f060006;
+        public static final int sLeavingTime=0x7f06000e;
+        public static final int sListHeader=0x7f060004;
+        public static final int sThumbnail=0x7f06000c;
+        public static final int title_person_detail=0x7f060001;
     }
     public static final class style {
         /** 
@@ -101,10 +108,10 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f060000;
+        public static final int AppBaseTheme=0x7f070000;
         /**  Application theme. 
          */
-        public static final int AppTheme=0x7f060001;
-        public static final int MyActionBar=0x7f060002;
+        public static final int AppTheme=0x7f070001;
+        public static final int MyActionBar=0x7f070002;
     }
 }

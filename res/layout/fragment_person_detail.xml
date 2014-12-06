@@ -104,7 +104,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/drinksLayout"
         android:background="@drawable/textfieldshape"
-        android:minHeight="350dp"
+        android:minHeight="325dp"
         android:minWidth="@dimen/dMinLayoutWidth"
         android:orientation="vertical" >
 
@@ -118,9 +118,27 @@
         android:layout_below="@+id/extrasLayout"
         android:layout_marginTop="@dimen/dMarginTop"
         android:background="@drawable/textfieldshape"
+        android:gravity="center_horizontal"
         android:minHeight="50dp"
         android:minWidth="@dimen/dMinLayoutWidth"
         android:orientation="horizontal" >
+        
+        <TextView
+            android:id="@+id/bonusTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="@string/sBonus"
+            android:textSize="@dimen/dTextSize" />
+        
+        <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:stepSize="1.0"
+        android:rating="0" 
+        android:layout_marginLeft="25dp"/>
 
     </LinearLayout>
 

@@ -39,8 +39,8 @@ public class PersonDetailActivity extends Activity {
             // Create the detail fragment and add it to the activity
             // using a fragment transaction.
             Bundle arguments = new Bundle();
-            arguments.putString(PersonDetailFragment.ARG_ITEM_ID,
-                    getIntent().getStringExtra(PersonDetailFragment.ARG_ITEM_ID));
+            arguments.putString(PersonDetailFragment.ARG_HOSTNAME,
+                    getIntent().getStringExtra(PersonDetailFragment.ARG_HOSTNAME));
             PersonDetailFragment fragment = new PersonDetailFragment();
             fragment.setArguments(arguments);
             getFragmentManager().beginTransaction()
