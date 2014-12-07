@@ -1,12 +1,10 @@
 package de.dada.praisification.hostlistitem;
 
 public class HostListItem {
-	
-	public long id;
+
     public String hostName;
 
-    public HostListItem(long l, String hostName) {
-        this.id = l;
+    public HostListItem(String hostName) {
         this.hostName = hostName;
     }
 

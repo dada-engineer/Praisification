@@ -1,8 +1,22 @@
 package de.dada.praisification;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import de.dada.praisification.hostlistitem.HostListItem;
+import de.dada.praisification.model.DAO;
+import de.dada.praisification.model.ProtocolContent;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.app.Activity;
+import android.app.AlertDialog;
 
 
 
@@ -24,19 +38,20 @@ import android.app.Activity;
  * to listen for item selections.
  */
 public class PersonListActivity extends Activity
-        implements PersonListFragment.Callbacks {
+        implements PersonListFragment.Callbacks, MenuItem.OnMenuItemClickListener{
 
     /**
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
      * device.
      */
     private boolean mTwoPane;
+    private ProtocolContent protocol;
+    private DAO dao = new DAO(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_person_list);
-
         if (findViewById(R.id.person_detail_container) != null) {
             // The detail container view will be present only in the
             // large-screen layouts (res/values-large and
@@ -80,4 +95,88 @@ public class PersonListActivity extends Activity
             startActivity(detailIntent);
         }
     }
+    
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        MenuItem actionNewHost = menu.findItem(R.id.actionNewHost);
+        actionNewHost.setOnMenuItemClickListener(this);
+        MenuItem actionSave = menu.findItem(R.id.actionSave);
+        actionSave.setOnMenuItemClickListener(this);
+        MenuItem actionDeleteHost = menu.findItem(R.id.actionDeleteHost);
+        actionDeleteHost.setOnMenuItemClickListener(this);
+        
+        return super.onCreateOptionsMenu(menu);
+    }
+
+	@Override
+	public boolean onMenuItemClick(MenuItem item) {
+		switch (item.getItemId()) {
+        	case R.id.actionSave:
+        		getDao().updateProtocol(protocol);
+        	case R.id.actionDeleteHost:
+        		getDao().deleteProtocol(protocol);
+        		((PersonListFragment) getFragmentManager()
+	                    .findFragmentById(R.id.person_list)).deleteHostItem(protocol.getName());
+        	case R.id.actionNewHost:
+        		LayoutInflater li = LayoutInflater.from(this);
+				View promptsView = li.inflate(R.layout.dialog, null);
+ 
+				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+						this);
+ 
+				// set dialog.xml to alertdialog builder
+				alertDialogBuilder.setView(promptsView);
+ 
+				final EditText userInput = (EditText) promptsView
+						.findViewById(R.id.editTextDialogUserInput);
+ 
+				// set dialog message
+				alertDialogBuilder
+					.setCancelable(false)
+					.setPositiveButton(getResources().getText(R.string.sOK),
+					  new DialogInterface.OnClickListener() {
+					    public void onClick(DialogInterface dialog,int id) {
+						// get user input and set it to result
+						// edit text
+						protocol = new ProtocolContent(userInput.getText().toString());
+						getDao().createProtocol(protocol);
+						HostListItem item = new HostListItem(userInput.getText().toString());
+						((PersonListFragment) getFragmentManager()
+			                    .findFragmentById(R.id.person_list)).updateHostList(item);
+					    }
+					  })
+					.setNegativeButton("Cancel",
+					  new DialogInterface.OnClickListener() {
+					    public void onClick(DialogInterface dialog,int id) {
+						dialog.cancel();
+					    }
+					  });
+ 
+				// create alert dialog
+				AlertDialog alertDialog = alertDialogBuilder.create();
+ 
+				// show it
+				alertDialog.show();
+        	default: break;
+			}
+		
+		return false;
+	}
+
+	public DAO getDao() {
+		return dao;
+	}
+
+	public void setDao(DAO dao) {
+		this.dao = dao;
+	}
+	
+	public ProtocolContent getProtocol() {
+		return protocol;
+	}
+
+	public void setProtocol(ProtocolContent protocol) {
+		this.protocol = protocol;
+	}
 }

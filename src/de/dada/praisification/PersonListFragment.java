@@ -44,7 +44,7 @@ public class PersonListFragment extends ListFragment {
      */
     private int mActivatedPosition = ListView.INVALID_POSITION;
     
-    public static List<HostListItem> ITEMS = new ArrayList<HostListItem>();
+    public List<HostListItem> ITEMS = new ArrayList<HostListItem>();
     private List<ProtocolContent> PROTOCOLLS = new ArrayList<ProtocolContent>();
     private DAO dao = null;
 
@@ -80,11 +80,11 @@ public class PersonListFragment extends ListFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        dao = new DAO(getActivity());
+        dao = ((PersonListActivity)this.getActivity()).getDao();
         dao.open();
         PROTOCOLLS = dao.getAllProtocolls();
         for(ProtocolContent p: PROTOCOLLS)
-        	ITEMS.add(new HostListItem(p.getId(), p.getName()));
+        	ITEMS.add(new HostListItem(p.getName()));
         	
         setListAdapter(new ArrayAdapter<HostListItem>(
                 getActivity(),
@@ -134,7 +134,7 @@ public class PersonListFragment extends ListFragment {
 
         // Notify the active callbacks interface (the activity, if the
         // fragment is attached to one) that an item has been selected.
-        mCallbacks.onItemSelected(Long.toString(ITEMS.get(position).id));
+        mCallbacks.onItemSelected((ITEMS.get(position).hostName));
     }
 
     @Override
@@ -167,4 +167,16 @@ public class PersonListFragment extends ListFragment {
 
         mActivatedPosition = position;
     }
+
+	public void updateHostList(HostListItem item) {
+		this.ITEMS.add(item);
+		((ArrayAdapter<HostListItem>)getListAdapter()).notifyDataSetChanged();
+	}
+
+	public void deleteHostItem(String name) {
+		HostListItem item = new HostListItem(name);
+		this.ITEMS.remove(item);
+		((ArrayAdapter<HostListItem>)getListAdapter()).notifyDataSetChanged();
+		
+	}
 }

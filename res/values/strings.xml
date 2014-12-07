@@ -19,5 +19,12 @@
     <string name="sAddContent">Add</string>
     <string name="sGetArrivalTime">Time</string>
     <string name="sGetLeavingTime">Time</string>
-	<string name="sPictureDescription">Grouppicture</string>
+	<string name="sPictureDescription">Group picture</string>
+	<string name="sActionSave">Save</string>
+	<string name="sActionNewHost">Add new host</string>
+	<string name="sActionDeleteHost">Delete current host</string>
+	<string name="sNewHostDialogHint">Type in new host name</string>
+	<string name="sOK">OK</string>
+	<string name="sCancel">Cancel</string>
+
 </resources>

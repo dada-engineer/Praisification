@@ -38,25 +38,30 @@ public final class R {
         public static final int textfieldshape=0x7f02000b;
     }
     public static final class id {
-        public static final int addContentButton=0x7f080012;
-        public static final int arrivalButton=0x7f080010;
-        public static final int arrivalDateTextView=0x7f080006;
-        public static final int arrivalTextView=0x7f080005;
-        public static final int bonusLayout=0x7f08000d;
-        public static final int bonusTextView=0x7f08000e;
-        public static final int categorySpinner=0x7f080011;
-        public static final int detailHeader=0x7f080003;
-        public static final int drinksLayout=0x7f08000a;
-        public static final int extrasLayout=0x7f08000c;
-        public static final int foodLayout=0x7f08000b;
-        public static final int host_detail=0x7f080002;
-        public static final int leavingButton=0x7f080009;
-        public static final int leavingDateTextView=0x7f080008;
-        public static final int leavingTextView=0x7f080007;
-        public static final int person_detail_container=0x7f080000;
-        public static final int person_list=0x7f080001;
-        public static final int ratingBar=0x7f08000f;
-        public static final int thumbnailView=0x7f080004;
+        public static final int actionDeleteHost=0x7f090017;
+        public static final int actionNewHost=0x7f090016;
+        public static final int actionSave=0x7f090015;
+        public static final int addContentButton=0x7f090014;
+        public static final int arrivalButton=0x7f090012;
+        public static final int arrivalDateTextView=0x7f090008;
+        public static final int arrivalTextView=0x7f090007;
+        public static final int bonusLayout=0x7f09000f;
+        public static final int bonusTextView=0x7f090010;
+        public static final int categorySpinner=0x7f090013;
+        public static final int detailHeader=0x7f090005;
+        public static final int drinksLayout=0x7f09000c;
+        public static final int editTextDialogUserInput=0x7f090003;
+        public static final int extrasLayout=0x7f09000e;
+        public static final int foodLayout=0x7f09000d;
+        public static final int host_detail=0x7f090004;
+        public static final int layout_root=0x7f090002;
+        public static final int leavingButton=0x7f09000b;
+        public static final int leavingDateTextView=0x7f09000a;
+        public static final int leavingTextView=0x7f090009;
+        public static final int person_detail_container=0x7f090000;
+        public static final int person_list=0x7f090001;
+        public static final int ratingBar=0x7f090011;
+        public static final int thumbnailView=0x7f090006;
     }
     public static final class layout {
         public static final int activity_person_detail=0x7f030000;
@@ -77,15 +82,23 @@ public final class R {
          */
         public static final int activity_person_list=0x7f030001;
         public static final int activity_person_twopane=0x7f030002;
-        public static final int fragment_person_detail=0x7f030003;
-        public static final int picture=0x7f030004;
+        public static final int dialog=0x7f030003;
+        public static final int fragment_person_detail=0x7f030004;
+        public static final int picture=0x7f030005;
+    }
+    public static final class menu {
+        public static final int menu=0x7f080000;
     }
     public static final class string {
         public static final int app_name=0x7f060000;
+        public static final int sActionDeleteHost=0x7f060015;
+        public static final int sActionNewHost=0x7f060014;
+        public static final int sActionSave=0x7f060013;
         public static final int sAddContent=0x7f06000f;
         public static final int sArrival=0x7f060005;
         public static final int sArrivalTime=0x7f06000d;
         public static final int sBonus=0x7f06000b;
+        public static final int sCancel=0x7f060018;
         public static final int sDeatilHeader=0x7f060002;
         public static final int sDone=0x7f06000a;
         public static final int sDrinks=0x7f060007;
@@ -97,6 +110,8 @@ public final class R {
         public static final int sLeaving=0x7f060006;
         public static final int sLeavingTime=0x7f06000e;
         public static final int sListHeader=0x7f060004;
+        public static final int sNewHostDialogHint=0x7f060016;
+        public static final int sOK=0x7f060017;
         public static final int sPictureDescription=0x7f060012;
         public static final int sThumbnail=0x7f06000c;
         public static final int title_person_detail=0x7f060001;
