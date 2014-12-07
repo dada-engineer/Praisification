@@ -66,7 +66,8 @@ public class PersonListFragment extends ListFragment {
      */
     private static Callbacks sDummyCallbacks = new Callbacks() {
         @Override
-        public void onItemSelected(String id) {
+        public void onItemSelected(String hostName) {
+        	
         }
     };
 
@@ -90,7 +91,7 @@ public class PersonListFragment extends ListFragment {
                 getActivity(),
                 android.R.layout.simple_list_item_activated_1,
                 android.R.id.text1,
-                ITEMS));
+                ITEMS));       	
     }
 
     @Override
@@ -102,7 +103,8 @@ public class PersonListFragment extends ListFragment {
                 && savedInstanceState.containsKey(STATE_ACTIVATED_POSITION)) {
             setActivatedPosition(savedInstanceState.getInt(STATE_ACTIVATED_POSITION));
         }
-        
+        if(PROTOCOLLS.size() > 0)
+        	this.setSelection(0);     
     }
 
     @Override
@@ -176,7 +178,10 @@ public class PersonListFragment extends ListFragment {
 	public void deleteHostItem(String name) {
 		HostListItem item = new HostListItem(name);
 		this.ITEMS.remove(item);
-		((ArrayAdapter<HostListItem>)getListAdapter()).notifyDataSetChanged();
-		
+		setListAdapter(new ArrayAdapter<HostListItem>(
+                getActivity(),
+                android.R.layout.simple_list_item_activated_1,
+                android.R.id.text1,
+                ITEMS));		
 	}
 }

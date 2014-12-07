@@ -9,6 +9,7 @@ import de.dada.praisification.model.ProtocolContent;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -74,15 +75,18 @@ public class PersonListActivity extends Activity
      * indicating that the item with the given ID was selected.
      */
     @Override
-    public void onItemSelected(String id) {
+    public void onItemSelected(String hostName) {
         if (mTwoPane) {
             // In two-pane mode, show the detail view in this activity by
             // adding or replacing the detail fragment using a
             // fragment transaction.
             Bundle arguments = new Bundle();
-            arguments.putString(PersonDetailFragment.ARG_HOSTNAME, id);
+            arguments.putString(PersonDetailFragment.ARG_HOSTNAME, hostName);
             PersonDetailFragment fragment = new PersonDetailFragment();
             fragment.setArguments(arguments);
+            getFragmentManager().beginTransaction()
+            .replace(R.id.person_detail_container, fragment)
+            .addToBackStack("detail");
             getFragmentManager().beginTransaction()
                     .replace(R.id.person_detail_container, fragment)
                     .commit();
@@ -91,9 +95,10 @@ public class PersonListActivity extends Activity
             // In single-pane mode, simply start the detail activity
             // for the selected item ID.
             Intent detailIntent = new Intent(this, PersonDetailActivity.class);
-            detailIntent.putExtra(PersonDetailFragment.ARG_HOSTNAME, id);
+            detailIntent.putExtra(PersonDetailFragment.ARG_HOSTNAME, hostName);
             startActivity(detailIntent);
         }
+        this.protocol= new ProtocolContent(hostName);
     }
     
     @Override
@@ -114,10 +119,16 @@ public class PersonListActivity extends Activity
 		switch (item.getItemId()) {
         	case R.id.actionSave:
         		getDao().updateProtocol(protocol);
+        		break;
         	case R.id.actionDeleteHost:
         		getDao().deleteProtocol(protocol);
         		((PersonListFragment) getFragmentManager()
 	                    .findFragmentById(R.id.person_list)).deleteHostItem(protocol.getName());
+        		Intent i = getBaseContext().getPackageManager()
+        	             .getLaunchIntentForPackage( getBaseContext().getPackageName() );
+        		i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        		startActivity(i);
+        		break;
         	case R.id.actionNewHost:
         		LayoutInflater li = LayoutInflater.from(this);
 				View promptsView = li.inflate(R.layout.dialog, null);
@@ -125,7 +136,7 @@ public class PersonListActivity extends Activity
 				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
 						this);
  
-				// set dialog.xml to alertdialog builder
+				// set dialog.xml to alert dialog builder
 				alertDialogBuilder.setView(promptsView);
  
 				final EditText userInput = (EditText) promptsView
@@ -144,6 +155,8 @@ public class PersonListActivity extends Activity
 						HostListItem item = new HostListItem(userInput.getText().toString());
 						((PersonListFragment) getFragmentManager()
 			                    .findFragmentById(R.id.person_list)).updateHostList(item);
+							((PersonListFragment) getFragmentManager()
+				                    .findFragmentById(R.id.person_list)).setSelection(0);
 					    }
 					  })
 					.setNegativeButton("Cancel",
@@ -158,6 +171,7 @@ public class PersonListActivity extends Activity
  
 				// show it
 				alertDialog.show();
+				break;
         	default: break;
 			}
 		

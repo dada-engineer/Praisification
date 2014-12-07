@@ -52,9 +52,9 @@ public class DAO {
 
   public void deleteProtocol(ProtocolContent protocol) {
     String name = protocol.getName();
-    System.out.println("Protocol deleted with id: " + name);
-    db.delete(Database.TABLE_PROTOCOLLS, Database.COLUMN_ID
-        + " = " + name, null);
+    System.out.println("Protocol deleted with name: " + name);
+    db.delete(Database.TABLE_PROTOCOLLS, Database.COLUMN_NAME
+        + "=?", new String [] { name });
   }
 
   public List<ProtocolContent> getAllProtocolls() {

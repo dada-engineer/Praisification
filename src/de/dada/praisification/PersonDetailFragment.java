@@ -57,9 +57,6 @@ public class PersonDetailFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         if (getArguments().containsKey(ARG_HOSTNAME)) {
-            // Load the dummy content specified by the fragment
-            // arguments. In a real-world scenario, use a Loader
-            // to load content from a content provider.
         	protocol = new ProtocolContent(getArguments().getString(ARG_HOSTNAME));
         }
     }
@@ -72,6 +69,12 @@ public class PersonDetailFragment extends Fragment {
         arrivalTimeButton = (Button) rootView.findViewById(R.id.arrivalButton);
         leavingTimeButton = (Button) rootView.findViewById(R.id.leavingButton);
         addContentButton = (Button) rootView.findViewById(R.id.addContentButton);
+        
+        if (getArguments().containsKey(ARG_HOSTNAME)) {
+        	TextView hostHeader = (TextView)(rootView.findViewById(R.id.detailHeader));
+        	hostHeader.setText(getResources().getString(R.string.sDeatilHeader) + " " +
+        			getArguments().getString(ARG_HOSTNAME));
+        }
 
         LayerDrawable stars = (LayerDrawable) ratingBar.getProgressDrawable();
         stars.getDrawable(2).setColorFilter(getResources().getColor(R.color.treeGreen), PorterDuff.Mode.SRC_ATOP);
