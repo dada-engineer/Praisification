@@ -1,5 +1,8 @@
 package de.dada.praisification;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.app.ListFragment;
@@ -8,7 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 
-import de.dada.praisification.protocol.ProtocolContent;
+import de.dada.praisification.model.ProtocolContent;
 import de.dada.praisification.hostlistitem.HostListItem;
 
 /**
@@ -38,6 +41,8 @@ public class PersonListFragment extends ListFragment {
      * The current activated item position. Only used on tablets.
      */
     private int mActivatedPosition = ListView.INVALID_POSITION;
+    
+    public static List<HostListItem> ITEMS = new ArrayList<HostListItem>();
 
     /**
      * A callback interface that all activities containing this fragment must
@@ -77,7 +82,7 @@ public class PersonListFragment extends ListFragment {
                 getActivity(),
                 android.R.layout.simple_list_item_activated_1,
                 android.R.id.text1,
-                ProtocolContent.ITEMS));
+                ITEMS));
     }
 
     @Override
@@ -89,6 +94,10 @@ public class PersonListFragment extends ListFragment {
                 && savedInstanceState.containsKey(STATE_ACTIVATED_POSITION)) {
             setActivatedPosition(savedInstanceState.getInt(STATE_ACTIVATED_POSITION));
         }
+        // Add 3 sample items.
+        ITEMS.add(new HostListItem("1", "Hostname 1"));
+        ITEMS.add(new HostListItem("2", "Hostname 2"));
+        ITEMS.add(new HostListItem("3", "Hostname 3"));
     }
 
     @Override
@@ -117,7 +126,7 @@ public class PersonListFragment extends ListFragment {
 
         // Notify the active callbacks interface (the activity, if the
         // fragment is attached to one) that an item has been selected.
-        mCallbacks.onItemSelected(ProtocolContent.ITEMS.get(position).id);
+        mCallbacks.onItemSelected(ITEMS.get(position).id);
     }
 
     @Override

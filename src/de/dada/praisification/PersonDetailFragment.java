@@ -2,8 +2,6 @@ package de.dada.praisification;
 
 import android.os.Bundle;
 import android.app.Fragment;
-import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.LayerDrawable;
 import android.view.LayoutInflater;
@@ -15,7 +13,7 @@ import android.widget.TextView;
 
 
 import de.dada.praisification.hostlistitem.HostListItem;
-import de.dada.praisification.protocol.ProtocolContent;
+import de.dada.praisification.model.ProtocolContent;
 
 /**
  * A fragment representing a single Person detail screen.
@@ -51,7 +49,6 @@ public class PersonDetailFragment extends Fragment {
             // Load the dummy content specified by the fragment
             // arguments. In a real-world scenario, use a Loader
             // to load content from a content provider.
-            mItem = ProtocolContent.ITEM_MAP.get(getArguments().getString(ARG_HOSTNAME));
         }
     }
 
@@ -80,7 +77,7 @@ public class PersonDetailFragment extends Fragment {
     		public void onRatingChanged(RatingBar ratingBar, float rating,
     			boolean fromUser) {
      
-    			//update host-ranking dataobject
+    			//update host-ranking data-object
      
     		}
     	});
