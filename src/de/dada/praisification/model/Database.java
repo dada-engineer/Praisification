@@ -15,6 +15,7 @@ public class Database extends SQLiteOpenHelper {
     public static final String COLUMN_ARRIVAL = "arrival";
     public static final String COLUMN_DEPARTURE = "departure";
     public static final String COLUMN_PICTURE = "picture";
+    public static final String COLUMN_RATING = "rating";
 
     private static final String DATABASE_NAME = "protocolls.db";
     private static final int DATABASE_VERSION = 1;
@@ -26,7 +27,7 @@ public class Database extends SQLiteOpenHelper {
         + " text not null," + COLUMN_DRINKS + " text not null," + COLUMN_FOOD
         + " text not null," + COLUMN_EXTRAS + " text not null," + COLUMN_ARRIVAL
         + " text not null," + COLUMN_DEPARTURE + " text not null," + COLUMN_PICTURE
-        + " text not null" + ");";
+        + " text not null," + COLUMN_RATING + "integer not null" + ");";
   
 	public Database(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);

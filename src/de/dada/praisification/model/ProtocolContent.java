@@ -19,6 +19,7 @@ public class ProtocolContent {
     private String arrivalTime;
     private String depatureTime;
     private String picturePath;
+    private int rating;
     
     public ProtocolContent(String name) {
     	this.setId(0);
@@ -29,6 +30,7 @@ public class ProtocolContent {
 	    this.setArrivalTime("");
 	    this.setDepatureTime("");
 	    this.setPicturePath("");
+	    this.setRating(0);
 	}
 
 	public String getPicturePath() {
@@ -93,5 +95,13 @@ public class ProtocolContent {
 
 	public void setId(long l) {
 		this.id = l;
+	}
+
+	public int getRating() {
+		return rating;
+	}
+
+	public void setRating(int rating) {
+		this.rating = rating;
 	}
 }

@@ -7,8 +7,10 @@ import android.graphics.drawable.LayerDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.RatingBar;
 import android.widget.RatingBar.OnRatingBarChangeListener;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 
@@ -28,11 +30,12 @@ public class PersonDetailFragment extends Fragment {
      */
     public static final String ARG_HOSTNAME = "hostname";
 
-    /**
+    /**getResources().getText(R.string.sDrinkSpinnerItem).toString()
      * The dummy content this fragment is presenting.
      */
     private HostListItem mItem;
     private RatingBar ratingBar;
+    private ProtocolContent protocol;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -68,6 +71,18 @@ public class PersonDetailFragment extends Fragment {
         		   getResources().getText(R.string.sDeatilHeader) + " " + mItem.hostName);
         }
         addListenerOnRatingBar();
+        
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(getActivity(), 
+        		android.R.layout.simple_spinner_item);
+        
+        spinnerAdapter.add(getResources().getText(R.string.sDrinkSpinnerItem).toString());
+        spinnerAdapter.add(getResources().getText(R.string.sFoodSpinnerItem).toString());
+        spinnerAdapter.add(getResources().getText(R.string.sExtrasSpinnerItem).toString());
+        spinnerAdapter.add(getResources().getText(R.string.sSelectHint).toString());
+        
+        Spinner spinner = (Spinner) rootView.findViewById(R.id.categorySpinner);
+        spinner.setAdapter(spinnerAdapter);
+        spinner.setSelection(spinnerAdapter.getCount() - 1);
         return rootView;
     }
     

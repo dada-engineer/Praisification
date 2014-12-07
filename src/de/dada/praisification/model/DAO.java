@@ -17,7 +17,7 @@ public class DAO {
   private String[] allColumns = { Database.COLUMN_ID,
 		  Database.COLUMN_NAME, Database.COLUMN_DRINKS, Database.COLUMN_FOOD,
 		  Database.COLUMN_EXTRAS, Database.COLUMN_ARRIVAL, Database.COLUMN_DEPARTURE,
-		  Database.COLUMN_PICTURE};
+		  Database.COLUMN_PICTURE, Database.COLUMN_RATING};
 
   public DAO(Context context) {
     dbHelper = new Database(context);
@@ -40,6 +40,7 @@ public class DAO {
     values.put(Database.COLUMN_ARRIVAL, protocol.getArrivalTime());
     values.put(Database.COLUMN_DEPARTURE, protocol.getDepatureTime());
     values.put(Database.COLUMN_PICTURE, protocol.getPicturePath());
+    values.put(Database.COLUMN_RATING, protocol.getRating());
     
     long insertId = db.insert(Database.TABLE_PROTOCOLLS, null,
         values);
@@ -90,6 +91,7 @@ public class DAO {
 		         String arrival = cursor.getString(cursor.getColumnIndex(Database.COLUMN_ARRIVAL));
 		         String departure = cursor.getString(cursor.getColumnIndex(Database.COLUMN_DEPARTURE));
 		         String picture = cursor.getString(cursor.getColumnIndex(Database.COLUMN_PICTURE));
+		         int rating = cursor.getInt(cursor.getColumnIndex(Database.COLUMN_RATING));
 		         
 		         protocol = new ProtocolContent(name);
 		         protocol.setId(id);
@@ -99,6 +101,7 @@ public class DAO {
 		         protocol.setArrivalTime(arrival);
 		         protocol.setDepatureTime(departure);
 		         protocol.setPicturePath(picture);
+		         protocol.setRating(rating);
 		    }
 		         cursor.close();
 		 }
@@ -114,6 +117,7 @@ public class DAO {
 	  values.put(Database.COLUMN_ARRIVAL, protocol.getArrivalTime());
 	  values.put(Database.COLUMN_DEPARTURE, protocol.getDepatureTime());
 	  values.put(Database.COLUMN_PICTURE, protocol.getPicturePath());
+	  values.put(Database.COLUMN_RATING, protocol.getRating());
 
 	  db.update(Database.TABLE_PROTOCOLLS, values, Database.COLUMN_NAME + 
 			  " = " + protocol.getName(), null);

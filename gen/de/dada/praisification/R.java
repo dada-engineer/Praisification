@@ -101,9 +101,12 @@ public final class R {
         public static final int sCancel=0x7f060018;
         public static final int sDeatilHeader=0x7f060002;
         public static final int sDone=0x7f06000a;
+        public static final int sDrinkSpinnerItem=0x7f06001a;
         public static final int sDrinks=0x7f060007;
         public static final int sExtras=0x7f060009;
+        public static final int sExtrasSpinnerItem=0x7f06001c;
         public static final int sFood=0x7f060008;
+        public static final int sFoodSpinnerItem=0x7f06001b;
         public static final int sGetArrivalTime=0x7f060010;
         public static final int sGetLeavingTime=0x7f060011;
         public static final int sHostName=0x7f060003;
@@ -113,6 +116,7 @@ public final class R {
         public static final int sNewHostDialogHint=0x7f060016;
         public static final int sOK=0x7f060017;
         public static final int sPictureDescription=0x7f060012;
+        public static final int sSelectHint=0x7f060019;
         public static final int sThumbnail=0x7f06000c;
         public static final int title_person_detail=0x7f060001;
     }

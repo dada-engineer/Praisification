@@ -26,5 +26,9 @@
 	<string name="sNewHostDialogHint">Type in new host name</string>
 	<string name="sOK">OK</string>
 	<string name="sCancel">Cancel</string>
-
+	<string name="sSelectHint">Select Item to Add</string>
+	<string name="sDrinkSpinnerItem">Drinks</string>
+	<string name="sFoodSpinnerItem">Food</string>
+	<string name="sExtrasSpinnerItem">Extras</string>
+	
 </resources>
