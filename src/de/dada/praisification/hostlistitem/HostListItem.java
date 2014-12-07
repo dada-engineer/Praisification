@@ -2,16 +2,16 @@ package de.dada.praisification.hostlistitem;
 
 public class HostListItem {
 	
-	public String id;
-    public String content;
+	public long id;
+    public String hostName;
 
-    public HostListItem(String id, String content) {
-        this.id = id;
-        this.content = content;
+    public HostListItem(long l, String hostName) {
+        this.id = l;
+        this.hostName = hostName;
     }
 
     @Override
     public String toString() {
-        return content;
+        return hostName;
     }
 }

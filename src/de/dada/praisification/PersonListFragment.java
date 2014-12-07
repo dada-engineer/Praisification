@@ -11,7 +11,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 
+import de.dada.praisification.model.DAO;
 import de.dada.praisification.model.ProtocolContent;
+import de.dada.praisification.model.Database;
 import de.dada.praisification.hostlistitem.HostListItem;
 
 /**
@@ -43,6 +45,8 @@ public class PersonListFragment extends ListFragment {
     private int mActivatedPosition = ListView.INVALID_POSITION;
     
     public static List<HostListItem> ITEMS = new ArrayList<HostListItem>();
+    private List<ProtocolContent> PROTOCOLLS = new ArrayList<ProtocolContent>();
+    private DAO dao = null;
 
     /**
      * A callback interface that all activities containing this fragment must
@@ -76,8 +80,12 @@ public class PersonListFragment extends ListFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // TODO: replace with a real list adapter.
+        dao = new DAO(getActivity());
+        dao.open();
+        PROTOCOLLS = dao.getAllProtocolls();
+        for(ProtocolContent p: PROTOCOLLS)
+        	ITEMS.add(new HostListItem(p.getId(), p.getName()));
+        	
         setListAdapter(new ArrayAdapter<HostListItem>(
                 getActivity(),
                 android.R.layout.simple_list_item_activated_1,
@@ -88,16 +96,13 @@ public class PersonListFragment extends ListFragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        
         // Restore the previously serialized activated item position.
         if (savedInstanceState != null
                 && savedInstanceState.containsKey(STATE_ACTIVATED_POSITION)) {
             setActivatedPosition(savedInstanceState.getInt(STATE_ACTIVATED_POSITION));
         }
-        // Add 3 sample items.
-        ITEMS.add(new HostListItem("1", "Hostname 1"));
-        ITEMS.add(new HostListItem("2", "Hostname 2"));
-        ITEMS.add(new HostListItem("3", "Hostname 3"));
+        
     }
 
     @Override
@@ -108,7 +113,8 @@ public class PersonListFragment extends ListFragment {
         if (!(activity instanceof Callbacks)) {
             throw new IllegalStateException("Activity must implement fragment's callbacks.");
         }
-
+        if(dao != null)
+        	dao.open();
         mCallbacks = (Callbacks) activity;
     }
 
@@ -118,6 +124,8 @@ public class PersonListFragment extends ListFragment {
 
         // Reset the active callbacks interface to the dummy implementation.
         mCallbacks = sDummyCallbacks;
+        if (dao != null)
+        	dao.close();
     }
 
     @Override
@@ -126,7 +134,7 @@ public class PersonListFragment extends ListFragment {
 
         // Notify the active callbacks interface (the activity, if the
         // fragment is attached to one) that an item has been selected.
-        mCallbacks.onItemSelected(ITEMS.get(position).id);
+        mCallbacks.onItemSelected(Long.toString(ITEMS.get(position).id));
     }
 
     @Override

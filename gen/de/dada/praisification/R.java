@@ -78,6 +78,7 @@ public final class R {
         public static final int activity_person_list=0x7f030001;
         public static final int activity_person_twopane=0x7f030002;
         public static final int fragment_person_detail=0x7f030003;
+        public static final int picture=0x7f030004;
     }
     public static final class string {
         public static final int app_name=0x7f060000;
@@ -96,6 +97,7 @@ public final class R {
         public static final int sLeaving=0x7f060006;
         public static final int sLeavingTime=0x7f06000e;
         public static final int sListHeader=0x7f060004;
+        public static final int sPictureDescription=0x7f060012;
         public static final int sThumbnail=0x7f06000c;
         public static final int title_person_detail=0x7f060001;
     }

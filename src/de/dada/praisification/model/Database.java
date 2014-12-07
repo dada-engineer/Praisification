@@ -1,14 +1,10 @@
 package de.dada.praisification.model;
 
-import java.util.Date;
-import java.util.List;
-
 import android.content.Context;
 import android.database.sqlite.*;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.util.Log;
 
-public class database extends SQLiteOpenHelper {
+public class Database extends SQLiteOpenHelper {
 
 	public static final String TABLE_PROTOCOLLS = "protocolls";
     public static final String COLUMN_ID = "_id";
@@ -27,12 +23,12 @@ public class database extends SQLiteOpenHelper {
     private static final String DATABASE_CREATE = "create table "
         + TABLE_PROTOCOLLS + "(" + COLUMN_ID
         + " integer primary key autoincrement, " + COLUMN_NAME
-        + " text not null" + COLUMN_DRINKS + " text not null" + COLUMN_FOOD
-        + " text not null" + COLUMN_EXTRAS + " text not null" + COLUMN_ARRIVAL
-        + " text not null" + COLUMN_DEPARTURE + " text not null" + COLUMN_PICTURE
+        + " text not null," + COLUMN_DRINKS + " text not null," + COLUMN_FOOD
+        + " text not null," + COLUMN_EXTRAS + " text not null," + COLUMN_ARRIVAL
+        + " text not null," + COLUMN_DEPARTURE + " text not null," + COLUMN_PICTURE
         + " text not null" + ");";
   
-	public database(Context context) {
+	public Database(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 	}
 
@@ -44,7 +40,7 @@ public class database extends SQLiteOpenHelper {
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		Log.w(database.class.getName(),
+		Log.w(Database.class.getName(),
 		        "Upgrading database from version " + oldVersion + " to "
 		            + newVersion + ", which will destroy all old data");
 		    db.execSQL("DROP TABLE IF EXISTS " + TABLE_PROTOCOLLS);

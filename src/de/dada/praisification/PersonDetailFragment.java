@@ -65,7 +65,7 @@ public class PersonDetailFragment extends Fragment {
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
            ((TextView) rootView.findViewById(R.id.detailHeader)).setText(
-        		   getResources().getText(R.string.sDeatilHeader) + " " + mItem.content);
+        		   getResources().getText(R.string.sDeatilHeader) + " " + mItem.hostName);
         }
         addListenerOnRatingBar();
         return rootView;

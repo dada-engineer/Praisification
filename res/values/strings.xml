@@ -19,5 +19,5 @@
     <string name="sAddContent">Add</string>
     <string name="sGetArrivalTime">Time</string>
     <string name="sGetLeavingTime">Time</string>
-
+	<string name="sPictureDescription">Grouppicture</string>
 </resources>
