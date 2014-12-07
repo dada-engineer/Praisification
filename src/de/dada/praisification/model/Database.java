@@ -27,7 +27,7 @@ public class Database extends SQLiteOpenHelper {
         + " text not null," + COLUMN_DRINKS + " text not null," + COLUMN_FOOD
         + " text not null," + COLUMN_EXTRAS + " text not null," + COLUMN_ARRIVAL
         + " text not null," + COLUMN_DEPARTURE + " text not null," + COLUMN_PICTURE
-        + " text not null," + COLUMN_RATING + "integer not null" + ");";
+        + " text not null," + COLUMN_RATING + " real not null" + ");";
   
 	public Database(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -41,6 +41,15 @@ public class Database extends SQLiteOpenHelper {
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+		Log.w(Database.class.getName(),
+		        "Upgrading database from version " + oldVersion + " to "
+		            + newVersion + ", which will destroy all old data");
+		    db.execSQL("DROP TABLE IF EXISTS " + TABLE_PROTOCOLLS);
+		    onCreate(db);
+	}
+	
+	@Override
+	public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		Log.w(Database.class.getName(),
 		        "Upgrading database from version " + oldVersion + " to "
 		            + newVersion + ", which will destroy all old data");

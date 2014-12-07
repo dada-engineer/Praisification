@@ -1,8 +1,5 @@
 package de.dada.praisification.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Helper class for providing sample content for user interfaces created by
  * Android template wizards.
@@ -11,7 +8,6 @@ import java.util.List;
  */
 public class ProtocolContent {
     
-	private long id;
     private String name;
     private String drinks;  // Comma separated String
     private String food;	// Comma separated String
@@ -19,10 +15,9 @@ public class ProtocolContent {
     private String arrivalTime;
     private String depatureTime;
     private String picturePath;
-    private int rating;
+    private float rating;
     
     public ProtocolContent(String name) {
-    	this.setId(0);
 		this.setName(name);
 		this.setDrinks("");
 	    this.setFood("");
@@ -89,19 +84,11 @@ public class ProtocolContent {
 		this.name = name;
 	}
 
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long l) {
-		this.id = l;
-	}
-
-	public int getRating() {
+	public float getRating() {
 		return rating;
 	}
 
-	public void setRating(int rating) {
-		this.rating = rating;
+	public void setRating(float f) {
+		this.rating = f;
 	}
 }

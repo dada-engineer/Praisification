@@ -83,25 +83,9 @@ public class DAO {
 	    if (cursor != null)
         {
          if (cursor.moveToFirst())
-            {
-		         long id = cursor.getInt(cursor.getColumnIndex(Database.COLUMN_ID));
-		         String drinks = cursor.getString(cursor.getColumnIndex(Database.COLUMN_DRINKS));
-		         String food = cursor.getString(cursor.getColumnIndex(Database.COLUMN_FOOD));
-		         String extras = cursor.getString(cursor.getColumnIndex(Database.COLUMN_EXTRAS));
-		         String arrival = cursor.getString(cursor.getColumnIndex(Database.COLUMN_ARRIVAL));
-		         String departure = cursor.getString(cursor.getColumnIndex(Database.COLUMN_DEPARTURE));
-		         String picture = cursor.getString(cursor.getColumnIndex(Database.COLUMN_PICTURE));
-		         int rating = cursor.getInt(cursor.getColumnIndex(Database.COLUMN_RATING));
-		         
+            {         
 		         protocol = new ProtocolContent(name);
-		         protocol.setId(id);
-		         protocol.setDrinks(drinks);
-		         protocol.setFood(food);
-		         protocol.setExtras(extras);
-		         protocol.setArrivalTime(arrival);
-		         protocol.setDepatureTime(departure);
-		         protocol.setPicturePath(picture);
-		         protocol.setRating(rating);
+		         protocol = cursorToProtocol(cursor);
 		    }
 		         cursor.close();
 		 }
@@ -124,9 +108,22 @@ public class DAO {
 }
 
   private ProtocolContent cursorToProtocol(Cursor cursor) {
-	  ProtocolContent protocol = new ProtocolContent("name");
-    protocol.setId(cursor.getLong(0));
-    protocol.setName(cursor.getString(1));
+	  ProtocolContent protocol = new ProtocolContent(cursor.getString(cursor.getColumnIndex(Database.COLUMN_NAME)));
+	  String drinks = cursor.getString(cursor.getColumnIndex(Database.COLUMN_DRINKS));
+      String food = cursor.getString(cursor.getColumnIndex(Database.COLUMN_FOOD));
+      String extras = cursor.getString(cursor.getColumnIndex(Database.COLUMN_EXTRAS));
+      String arrival = cursor.getString(cursor.getColumnIndex(Database.COLUMN_ARRIVAL));
+      String departure = cursor.getString(cursor.getColumnIndex(Database.COLUMN_DEPARTURE));
+      String picture = cursor.getString(cursor.getColumnIndex(Database.COLUMN_PICTURE));
+      float rating = cursor.getInt(cursor.getColumnIndex(Database.COLUMN_RATING));
+      
+      protocol.setDrinks(drinks);
+      protocol.setFood(food);
+      protocol.setExtras(extras);
+      protocol.setArrivalTime(arrival);
+      protocol.setDepatureTime(departure);
+      protocol.setPicturePath(picture);
+      protocol.setRating(rating);
     return protocol;
   }
 } 

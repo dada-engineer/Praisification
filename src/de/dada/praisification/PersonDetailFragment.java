@@ -6,13 +6,18 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.LayerDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.RatingBar.OnRatingBarChangeListener;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 import de.dada.praisification.hostlistitem.HostListItem;
 import de.dada.praisification.model.ProtocolContent;
@@ -36,6 +41,9 @@ public class PersonDetailFragment extends Fragment {
     private HostListItem mItem;
     private RatingBar ratingBar;
     private ProtocolContent protocol;
+    private Button arrivalTimeButton;
+    private Button leavingTimeButton;
+    private Button addContentButton;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -52,6 +60,7 @@ public class PersonDetailFragment extends Fragment {
             // Load the dummy content specified by the fragment
             // arguments. In a real-world scenario, use a Loader
             // to load content from a content provider.
+        	protocol = new ProtocolContent(getArguments().getString(ARG_HOSTNAME));
         }
     }
 
@@ -60,6 +69,10 @@ public class PersonDetailFragment extends Fragment {
             Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_person_detail, container, false);
         ratingBar = (RatingBar) rootView.findViewById(R.id.ratingBar);
+        arrivalTimeButton = (Button) rootView.findViewById(R.id.arrivalButton);
+        leavingTimeButton = (Button) rootView.findViewById(R.id.leavingButton);
+        addContentButton = (Button) rootView.findViewById(R.id.addContentButton);
+
         LayerDrawable stars = (LayerDrawable) ratingBar.getProgressDrawable();
         stars.getDrawable(2).setColorFilter(getResources().getColor(R.color.treeGreen), PorterDuff.Mode.SRC_ATOP);
         stars.getDrawable(1).setColorFilter(getResources().getColor(R.color.lightGreen), PorterDuff.Mode.SRC_ATOP);
@@ -71,6 +84,7 @@ public class PersonDetailFragment extends Fragment {
         		   getResources().getText(R.string.sDeatilHeader) + " " + mItem.hostName);
         }
         addListenerOnRatingBar();
+        addListenerOnButtons(rootView);
         
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(getActivity(), 
         		android.R.layout.simple_spinner_item);
@@ -91,10 +105,46 @@ public class PersonDetailFragment extends Fragment {
     	ratingBar.setOnRatingBarChangeListener(new OnRatingBarChangeListener() {
     		public void onRatingChanged(RatingBar ratingBar, float rating,
     			boolean fromUser) {
-     
-    			//update host-ranking data-object
-     
+    			protocol.setRating(ratingBar.getRating());
     		}
     	});
       }
+    
+    public void addListenerOnButtons(final View rootView) {    	
+    	arrivalTimeButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss", Locale.getDefault());
+				Date date = new Date();
+				TextView dateTextView = (TextView) rootView.findViewById(R.id.arrivalDateTextView);
+				dateTextView.setText(sdf.format(date));
+				protocol.setArrivalTime(sdf.format(date));
+			}
+		});
+    	
+    	leavingTimeButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss", Locale.getDefault());
+				Date date = new Date();
+				TextView dateTextView = (TextView) rootView.findViewById(R.id.leavingDateTextView);
+				dateTextView.setText(sdf.format(date));
+				protocol.setDepatureTime(sdf.format(date));
+			}
+		});
+    	
+    	addContentButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				//TODO add content button functionallity
+			}
+		});
+      }
+    
+    public void setProtocol(ProtocolContent protocol){
+    	this.protocol = protocol;
+    }
 }
