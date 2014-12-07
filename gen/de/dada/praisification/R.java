@@ -25,16 +25,26 @@ public final class R {
     }
     public static final class drawable {
         public static final int background=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
-        public static final int placeholder=0x7f020002;
-        public static final int textfieldshape=0x7f020003;
+        public static final int buttonshape=0x7f020001;
+        public static final int buttonshape_pressed=0x7f020002;
+        public static final int buttonstyle=0x7f020003;
+        public static final int ic_action_discard=0x7f020004;
+        public static final int ic_action_new=0x7f020005;
+        public static final int ic_action_new_label=0x7f020006;
+        public static final int ic_action_save=0x7f020007;
+        public static final int ic_action_time=0x7f020008;
+        public static final int ic_launcher=0x7f020009;
+        public static final int placeholder=0x7f02000a;
+        public static final int textfieldshape=0x7f02000b;
     }
     public static final class id {
+        public static final int addContentButton=0x7f080012;
         public static final int arrivalButton=0x7f080010;
         public static final int arrivalDateTextView=0x7f080006;
         public static final int arrivalTextView=0x7f080005;
         public static final int bonusLayout=0x7f08000d;
         public static final int bonusTextView=0x7f08000e;
+        public static final int categorySpinner=0x7f080011;
         public static final int detailHeader=0x7f080003;
         public static final int drinksLayout=0x7f08000a;
         public static final int extrasLayout=0x7f08000c;
@@ -71,6 +81,7 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f060000;
+        public static final int sAddContent=0x7f06000f;
         public static final int sArrival=0x7f060005;
         public static final int sArrivalTime=0x7f06000d;
         public static final int sBonus=0x7f06000b;
@@ -79,6 +90,8 @@ public final class R {
         public static final int sDrinks=0x7f060007;
         public static final int sExtras=0x7f060009;
         public static final int sFood=0x7f060008;
+        public static final int sGetArrivalTime=0x7f060010;
+        public static final int sGetLeavingTime=0x7f060011;
         public static final int sHostName=0x7f060003;
         public static final int sLeaving=0x7f060006;
         public static final int sLeavingTime=0x7f06000e;

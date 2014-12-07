@@ -149,7 +149,10 @@
         android:layout_alignBaseline="@+id/arrivalDateTextView"
         android:layout_alignBottom="@+id/arrivalDateTextView"
         android:layout_marginLeft="25dp"
-        android:layout_toRightOf="@+id/arrivalDateTextView" />
+        android:layout_toRightOf="@+id/arrivalDateTextView"
+        android:background="@drawable/buttonstyle"
+        android:drawableTop="@drawable/ic_action_time"
+        android:text="@string/sGetArrivalTime" />
     
     <Button
         android:id="@+id/leavingButton"
@@ -158,6 +161,32 @@
         android:layout_alignBaseline="@+id/leavingDateTextView"
         android:layout_alignBottom="@+id/leavingDateTextView"
         android:layout_alignParentRight="true"
-        android:layout_marginLeft="25dp" />
+        android:layout_marginLeft="25dp"
+        android:background="@drawable/buttonstyle"
+        android:drawableTop="@drawable/ic_action_time"
+        android:text="@string/sGetLeavingTime" />
+
+    <Spinner
+        android:id="@+id/categorySpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_toLeftOf="@+id/extrasLayout"
+        android:layout_toRightOf="@+id/drinksLayout"
+        android:background="@drawable/textfieldshape"
+        android:gravity="center_horizontal" />
+
+    <Button
+        android:id="@+id/addContentButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/categorySpinner"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/buttonstyle"
+        android:drawableTop="@drawable/ic_action_new"
+        android:text="@string/sAddContent" />
 
 </RelativeLayout>

@@ -16,5 +16,8 @@
     <string name="sThumbnail">Thumbnail</string>
     <string name="sArrivalTime">Click on the Button</string>
     <string name="sLeavingTime">Click on the Button</string>
+    <string name="sAddContent">Add</string>
+    <string name="sGetArrivalTime">Time</string>
+    <string name="sGetLeavingTime">Time</string>
 
 </resources>
