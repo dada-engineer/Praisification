@@ -17,6 +17,7 @@
     <string name="sArrivalTime">Click on the Button</string>
     <string name="sLeavingTime">Click on the Button</string>
     <string name="sAddContent">Add</string>
+    <string name="sRemoveContent">Remove</string>
     <string name="sGetArrivalTime">Time</string>
     <string name="sGetLeavingTime">Time</string>
 	<string name="sPictureDescription">Group picture</string>
@@ -30,5 +31,6 @@
 	<string name="sDrinkSpinnerItem">Drinks</string>
 	<string name="sFoodSpinnerItem">Food</string>
 	<string name="sExtrasSpinnerItem">Extras</string>
+	<string name="sDialogDeleteHeader">Select the items you want to remove</string>
 	
 </resources>

@@ -13,7 +13,6 @@ import android.widget.ListView;
 
 import de.dada.praisification.model.DAO;
 import de.dada.praisification.model.ProtocolContent;
-import de.dada.praisification.model.Database;
 import de.dada.praisification.hostlistitem.HostListItem;
 
 /**
@@ -104,7 +103,7 @@ public class PersonListFragment extends ListFragment {
             setActivatedPosition(savedInstanceState.getInt(STATE_ACTIVATED_POSITION));
         }
         if(PROTOCOLLS.size() > 0)
-        	this.setSelection(0);     
+        	this.setActivatedPosition(0);     
     }
 
     @Override

@@ -75,16 +75,15 @@ public class DAO {
   }
   
   public ProtocolContent getProtocolByName(String name) {
-	    ProtocolContent protocol = null;
+	    ProtocolContent protocol = new ProtocolContent(name);
 
 	    Cursor cursor = db.rawQuery("select * from " + Database.TABLE_PROTOCOLLS +
-	    		" where " + Database.COLUMN_NAME + "=" + name  , null);
+	    		" where " + Database.COLUMN_NAME + "=" + "'" + name + "'"  , null);
 
 	    if (cursor != null)
         {
          if (cursor.moveToFirst())
             {         
-		         protocol = new ProtocolContent(name);
 		         protocol = cursorToProtocol(cursor);
 		    }
 		         cursor.close();
@@ -104,7 +103,7 @@ public class DAO {
 	  values.put(Database.COLUMN_RATING, protocol.getRating());
 
 	  db.update(Database.TABLE_PROTOCOLLS, values, Database.COLUMN_NAME + 
-			  " = " + protocol.getName(), null);
+			  " =? ", new String [] {protocol.getName()});
 }
 
   private ProtocolContent cursorToProtocol(Cursor cursor) {

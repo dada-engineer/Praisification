@@ -1,20 +1,15 @@
 package de.dada.praisification;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import de.dada.praisification.hostlistitem.HostListItem;
 import de.dada.praisification.model.DAO;
 import de.dada.praisification.model.ProtocolContent;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -106,8 +101,6 @@ public class PersonListActivity extends Activity
         getMenuInflater().inflate(R.menu.menu, menu);
         MenuItem actionNewHost = menu.findItem(R.id.actionNewHost);
         actionNewHost.setOnMenuItemClickListener(this);
-        MenuItem actionSave = menu.findItem(R.id.actionSave);
-        actionSave.setOnMenuItemClickListener(this);
         MenuItem actionDeleteHost = menu.findItem(R.id.actionDeleteHost);
         actionDeleteHost.setOnMenuItemClickListener(this);
         
@@ -117,17 +110,18 @@ public class PersonListActivity extends Activity
 	@Override
 	public boolean onMenuItemClick(MenuItem item) {
 		switch (item.getItemId()) {
-        	case R.id.actionSave:
-        		getDao().updateProtocol(protocol);
-        		break;
         	case R.id.actionDeleteHost:
-        		getDao().deleteProtocol(protocol);
-        		((PersonListFragment) getFragmentManager()
-	                    .findFragmentById(R.id.person_list)).deleteHostItem(protocol.getName());
-        		Intent i = getBaseContext().getPackageManager()
-        	             .getLaunchIntentForPackage( getBaseContext().getPackageName() );
-        		i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        		startActivity(i);
+        		if(((PersonDetailFragment) getFragmentManager()
+	                    .findFragmentById(R.id.person_detail_container)) != null)
+        		{
+        			getDao().deleteProtocol(protocol);
+            		((PersonListFragment) getFragmentManager()
+    	                    .findFragmentById(R.id.person_list)).deleteHostItem(protocol.getName());
+            		Intent i = getBaseContext().getPackageManager()
+            	             .getLaunchIntentForPackage( getBaseContext().getPackageName() );
+            		i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            		startActivity(i);
+        		}
         		break;
         	case R.id.actionNewHost:
         		LayoutInflater li = LayoutInflater.from(this);

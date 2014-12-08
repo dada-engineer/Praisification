@@ -1,193 +1,270 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/host_detail"
-    style="?android:attr/textAppearanceLarge"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/background"
-    android:padding="16dp"
-    android:textIsSelectable="true"
-    tools:context="de.dada.praisification.PersonDetailFragment" >
+    android:id="@+id/ScrollView01"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#00000000" >
 
-    <TextView
-        android:id="@+id/detailHeader"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:gravity="center_horizontal"
-        android:text="@string/sDeatilHeader"
-        android:textSize="@dimen/dHeaderSize" />
-
-    <ImageView
-        android:id="@+id/thumbnailView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/detailHeader"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/dMarginTop"
-        android:adjustViewBounds="true"
-        android:contentDescription="@string/sThumbnail"
-        android:maxHeight="@dimen/dMaxPictureHeight"
-        android:maxWidth="@dimen/dMaxPictureWidth"
-        android:src="@drawable/placeholder" />
-
-    <TextView
-        android:id="@+id/arrivalTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/detailHeader"
-        android:layout_alignTop="@+id/thumbnailView"
-        android:text="@string/sArrival" 
-        android:textSize="@dimen/dTextSize" />
-
-    <TextView
-        android:id="@+id/arrivalDateTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/arrivalTextView"
-        android:layout_below="@+id/arrivalTextView"
-        android:text="@string/sArrivalTime"
-        android:textSize="@dimen/dTextSize" />
-
-    <TextView
-        android:id="@+id/leavingTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/leavingDateTextView"
-        android:layout_alignTop="@+id/thumbnailView"
-        android:text="@string/sLeaving"
-        android:textSize="@dimen/dTextSize" />
-
-    <TextView
-        android:id="@+id/leavingDateTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/leavingTextView"
-        android:layout_toLeftOf="@+id/leavingButton"
-        android:text="@string/sLeavingTime"
-        android:textSize="@dimen/dTextSize" />
-
-    <LinearLayout
-        android:id="@+id/drinksLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/thumbnailView"
-        android:layout_marginTop="@dimen/dMarginTop"
-        android:background="@drawable/textfieldshape"
-        android:minHeight="250dp"
-        android:minWidth="@dimen/dMinLayoutWidth"
-        android:orientation="vertical" >
-
-    </LinearLayout>
-    
-    <LinearLayout
-        android:id="@+id/foodLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/arrivalDateTextView"
-        android:layout_below="@+id/drinksLayout"
-        android:layout_marginTop="@dimen/dMarginTop"
-        android:background="@drawable/textfieldshape"
-        android:minHeight="200dp"
-        android:minWidth="@dimen/dMinLayoutWidth"
-        android:orientation="vertical" >
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/extrasLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/drinksLayout"
-        android:background="@drawable/textfieldshape"
-        android:minHeight="325dp"
-        android:minWidth="@dimen/dMinLayoutWidth"
-        android:orientation="vertical" >
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/bonusLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/extrasLayout"
-        android:layout_below="@+id/extrasLayout"
-        android:layout_marginTop="@dimen/dMarginTop"
-        android:background="@drawable/textfieldshape"
-        android:gravity="center_horizontal"
-        android:minHeight="50dp"
-        android:minWidth="@dimen/dMinLayoutWidth"
-        android:orientation="horizontal" >
+	<RelativeLayout
+	    android:id="@+id/host_detail"
+	    style="?android:attr/textAppearanceLarge"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:background="#00000000"
+	    android:padding="16dp"
+	    android:textIsSelectable="true"
+	    tools:context="de.dada.praisification.PersonDetailFragment" >
         
-        <TextView
-            android:id="@+id/bonusTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="@string/sBonus"
-            android:textSize="@dimen/dTextSize" />
-        
-        <RatingBar
-        android:id="@+id/ratingBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:numStars="5"
-        android:stepSize="1.0"
-        android:rating="0" 
-        android:layout_marginLeft="25dp"/>
+	    <TextView
+	        android:id="@+id/detailHeader"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentLeft="true"
+	        android:layout_alignParentRight="true"
+	        android:layout_alignParentTop="true"
+	        android:gravity="center_horizontal"
+	        android:text="@string/sDeatilHeader"
+	        android:textSize="@dimen/dHeaderSize" 
+	        android:textStyle="bold|italic" />
+	
+	    <ImageView
+	        android:id="@+id/thumbnailView"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/detailHeader"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginTop="@dimen/dMarginTop"
+	        android:adjustViewBounds="true"
+	        android:contentDescription="@string/sThumbnail"
+	        android:maxHeight="@dimen/dMaxPictureHeight"
+	        android:maxWidth="@dimen/dMaxPictureWidth"
+	        android:src="@drawable/placeholder" />
+	
+	    <TextView
+	        android:id="@+id/arrivalTextView"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignLeft="@+id/detailHeader"
+	        android:layout_alignTop="@+id/thumbnailView"
+	        android:text="@string/sArrival" 
+	        android:textSize="@dimen/dTextSize" />
+	
+	    <TextView
+	        android:id="@+id/arrivalDateTextView"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignLeft="@+id/arrivalTextView"
+	        android:layout_below="@+id/arrivalTextView"
+	        android:text="@string/sArrivalTime"
+	        android:textSize="@dimen/dTextSize" />
+	
+	    <TextView
+	        android:id="@+id/leavingTextView"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignLeft="@+id/leavingDateTextView"
+	        android:layout_alignTop="@+id/thumbnailView"
+	        android:text="@string/sLeaving"
+	        android:textSize="@dimen/dTextSize" />
+	
+	    <TextView
+	        android:id="@+id/leavingDateTextView"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/leavingTextView"
+	        android:layout_toLeftOf="@+id/leavingButton"
+	        android:text="@string/sLeavingTime"
+	        android:textSize="@dimen/dTextSize" />
+	
+	    <LinearLayout
+	        android:id="@+id/bonusLayout"
+	        android:layout_width="@dimen/dMinLayoutWidth"
+	        android:layout_height="wrap_content"
+	        android:layout_alignLeft="@+id/extrasLayout"
+	        android:layout_alignRight="@+id/extrasLayout"
+	        android:layout_below="@+id/extrasLayout"
+	        android:layout_marginTop="@dimen/dMarginTop"
+	        android:background="@drawable/textfieldshape"
+	        android:gravity="center_horizontal"
+	        android:minHeight="50dp"
+	        android:minWidth="@dimen/dMinLayoutWidth"
+	        android:orientation="horizontal" >
+	        
+	        <TextView
+	            android:id="@+id/bonusTextView"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center_vertical"
+	            android:text="@string/sBonus"
+	            android:textSize="30sp"
+	            android:textStyle="bold|italic" />
+	        
+	        <RatingBar
+	        android:id="@+id/ratingBar"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:numStars="5"
+	        android:stepSize="1.0"
+	        android:rating="0" 
+	        android:layout_marginLeft="25dp"/>
+	
+	    </LinearLayout>
+	
+	    <Button
+	        android:id="@+id/arrivalButton"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignBaseline="@+id/arrivalDateTextView"
+	        android:layout_alignBottom="@+id/arrivalDateTextView"
+	        android:layout_marginLeft="25dp"
+	        android:layout_toRightOf="@+id/arrivalDateTextView"
+	        android:background="@drawable/buttonstyle"
+	        android:drawableTop="@drawable/ic_action_time"
+	        android:text="@string/sGetArrivalTime" />
+	    
+	    <Button
+	        android:id="@+id/leavingButton"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignBaseline="@+id/leavingDateTextView"
+	        android:layout_alignBottom="@+id/leavingDateTextView"
+	        android:layout_alignParentRight="true"
+	        android:layout_marginLeft="25dp"
+	        android:background="@drawable/buttonstyle"
+	        android:drawableTop="@drawable/ic_action_time"
+	        android:text="@string/sGetLeavingTime" />
 
-    </LinearLayout>
+	    <LinearLayout
+	        android:id="@+id/drinksLayout"
+	        android:layout_width="@dimen/dMinLayoutWidth"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/thumbnailView"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginTop="@dimen/dMarginTop"
+	        android:background="@drawable/textfieldshape"
+	        android:minHeight="250dp"
+	        android:minWidth="@dimen/dMinLayoutWidth"
+	        android:orientation="vertical" >
 
-    <Button
-        android:id="@+id/arrivalButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/arrivalDateTextView"
-        android:layout_alignBottom="@+id/arrivalDateTextView"
-        android:layout_marginLeft="25dp"
-        android:layout_toRightOf="@+id/arrivalDateTextView"
-        android:background="@drawable/buttonstyle"
-        android:drawableTop="@drawable/ic_action_time"
-        android:text="@string/sGetArrivalTime" />
-    
-    <Button
-        android:id="@+id/leavingButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/leavingDateTextView"
-        android:layout_alignBottom="@+id/leavingDateTextView"
-        android:layout_alignParentRight="true"
-        android:layout_marginLeft="25dp"
-        android:background="@drawable/buttonstyle"
-        android:drawableTop="@drawable/ic_action_time"
-        android:text="@string/sGetLeavingTime" />
+	        <TextView
+	            android:id="@+id/drinksLabel"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center_vertical"
+	            android:gravity="center_horizontal"
+	            android:text="@string/sDrinks"
+	            android:textSize="30sp"
+	            android:textStyle="bold|italic" />
 
-    <Spinner
-        android:id="@+id/categorySpinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/addContentButton"
-        android:layout_alignLeft="@+id/drinksLayout"
-        android:layout_alignTop="@+id/addContentButton"
-        android:layout_toLeftOf="@+id/addContentButton"
-        android:background="@drawable/textfieldshape"
-        android:gravity="center_vertical|center_horizontal" />
+	        <TextView
+	            android:id="@+id/servedDrinksTextView"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center_vertical"
+	            android:layout_marginTop="15dp"
+	            android:gravity="center_horizontal"
+	            android:scrollHorizontally="false"
+	            android:textSize="@dimen/dTextSize" />
+	    </LinearLayout>
 
-    <Button
-        android:id="@+id/addContentButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/arrivalButton"
-        android:layout_toLeftOf="@+id/thumbnailView"
-        android:background="@drawable/buttonstyle"
-        android:drawableTop="@drawable/ic_action_new"
-        android:text="@string/sAddContent" 
-        android:layout_marginRight="25dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="10dp" />
+	    <LinearLayout
+	        android:id="@+id/foodLayout"
+	        android:layout_width="@dimen/dMinLayoutWidth"
+	        android:layout_height="wrap_content"
+	        android:layout_alignLeft="@+id/drinksLayout"
+	        android:layout_below="@+id/drinksLayout"
+	        android:layout_marginTop="@dimen/dMarginTop"
+	        android:background="@drawable/textfieldshape"
+	        android:minHeight="200dp"
+	        android:minWidth="@dimen/dMinLayoutWidth"
+	        android:orientation="vertical" >
 
-</RelativeLayout>
+	        <TextView
+	            android:id="@+id/foodLabel"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center_vertical"
+	            android:gravity="center_horizontal"
+	            android:text="@string/sFood"
+	            android:textSize="30sp"
+	            android:textStyle="bold|italic" />
+
+	        <TextView
+	            android:id="@+id/servedFoodTextView"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center_vertical"
+	            android:layout_marginTop="15dp"
+	            android:gravity="center_horizontal"
+	            android:scrollHorizontally="false"
+	            android:textSize="@dimen/dTextSize" />
+	    </LinearLayout>
+
+	    <LinearLayout
+	        android:id="@+id/extrasLayout"
+	        android:layout_width="@dimen/dMinLayoutWidth"
+	        android:layout_height="wrap_content"
+	        android:layout_alignLeft="@+id/foodLayout"
+	        android:layout_below="@+id/foodLayout"
+	        android:layout_marginTop="@dimen/dMarginTop"
+	        android:background="@drawable/textfieldshape"
+	        android:minHeight="325dp"
+	        android:minWidth="@dimen/dMinLayoutWidth"
+	        android:orientation="vertical" >
+
+	        <TextView
+	            android:id="@+id/extrasLabel"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center_vertical"
+	            android:gravity="center_horizontal"
+	            android:text="@string/sExtras"
+	            android:textSize="30sp"
+	            android:textStyle="bold|italic" />
+
+	        <TextView
+	            android:id="@+id/servedExtrasTextView"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center_vertical"
+	            android:layout_marginTop="15dp"
+	            android:gravity="center_horizontal"
+	            android:scrollHorizontally="false"
+	            android:textSize="@dimen/dTextSize" />
+	    </LinearLayout>
+
+	    <Spinner
+	        android:id="@+id/categorySpinner"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentLeft="true"
+	        android:layout_alignTop="@+id/drinksLayout"
+	        android:layout_marginRight="@dimen/dMarginTop"
+	        android:layout_toLeftOf="@+id/drinksLayout"
+	        android:background="@drawable/textfieldshape"
+	        android:gravity="center" />
+
+	    <Button
+	        android:id="@+id/addContentButton"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignLeft="@+id/arrivalDateTextView"
+	        android:layout_below="@+id/categorySpinner"
+	        android:layout_marginTop="@dimen/dMarginTop"
+	        android:background="@drawable/buttonstyle"
+	        android:drawableTop="@drawable/ic_action_new"
+	        android:text="@string/sAddContent" />
+
+	    <Button
+	        android:id="@+id/removeContentButton"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignBaseline="@+id/addContentButton"
+	        android:layout_alignBottom="@+id/addContentButton"
+	        android:layout_alignRight="@+id/categorySpinner"
+	        android:background="@drawable/buttonstyle"
+	        android:drawableTop="@drawable/ic_action_remove"
+	        android:text="@string/sRemoveContent" />
+
+	</RelativeLayout>
+</ScrollView>
