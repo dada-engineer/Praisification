@@ -1,5 +1,7 @@
 package de.dada.praisification.model;
 
+import de.dada.praisification.R;
+
 /**
  * Helper class for providing sample content for user interfaces created by
  * Android template wizards.

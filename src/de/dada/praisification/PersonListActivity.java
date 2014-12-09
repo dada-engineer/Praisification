@@ -85,7 +85,6 @@ public class PersonListActivity extends Activity
             getFragmentManager().beginTransaction()
                     .replace(R.id.person_detail_container, fragment)
                     .commit();
-
         } else {
             // In single-pane mode, simply start the detail activity
             // for the selected item ID.
@@ -142,15 +141,20 @@ public class PersonListActivity extends Activity
 					.setPositiveButton(getResources().getText(R.string.sOK),
 					  new DialogInterface.OnClickListener() {
 					    public void onClick(DialogInterface dialog,int id) {
-						// get user input and set it to result
-						// edit text
-						protocol = new ProtocolContent(userInput.getText().toString());
-						getDao().createProtocol(protocol);
-						HostListItem item = new HostListItem(userInput.getText().toString());
-						((PersonListFragment) getFragmentManager()
-			                    .findFragmentById(R.id.person_list)).updateHostList(item);
-							((PersonListFragment) getFragmentManager()
-				                    .findFragmentById(R.id.person_list)).setSelection(0);
+							// get user input and set it to result
+							// edit text
+							protocol = new ProtocolContent(userInput.getText().toString());
+							getDao().createProtocol(protocol);
+							HostListItem item = new HostListItem(userInput.getText().toString());
+							PersonListFragment plf = ((PersonListFragment) getFragmentManager()
+				                    .findFragmentById(R.id.person_list));
+							plf.updateHostList(item);
+							int position = plf.ITEMS.size() - 1;
+				        	plf.getListView().requestFocusFromTouch();
+				        	plf.getListView().setSelection(position);
+				        	plf.getListView().performItemClick(plf.getListView().
+				        			getAdapter().getView(position, null, null),
+				        			position, position);
 					    }
 					  })
 					.setNegativeButton("Cancel",

@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.DialogInterface;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -92,7 +93,6 @@ public class PersonDetailFragment extends Fragment {
         stars.getDrawable(1).setColorFilter(getResources().getColor(R.color.lightGreen), PorterDuff.Mode.SRC_ATOP);
         stars.getDrawable(0).setColorFilter(getResources().getColor(R.color.lightestGreen), PorterDuff.Mode.SRC_ATOP);
         
-        // Show the dummy content as text in a TextView.
         if (mItem != null) {
            ((TextView) rootView.findViewById(R.id.detailHeader)).setText(
         		   getResources().getText(R.string.sDeatilHeader) + " " + mItem.hostName);
@@ -116,8 +116,22 @@ public class PersonDetailFragment extends Fragment {
     }
     
     private void loadViewContent(View rootView) {
-		// TODO Auto-generated method stub
+    	TextView arrival = (TextView) rootView.findViewById(R.id.arrivalDateTextView);
+		TextView leaving = (TextView) rootView.findViewById(R.id.leavingDateTextView);
+		TextView drinks = (TextView) rootView.findViewById(R.id.servedDrinksTextView);
+		TextView food = (TextView) rootView.findViewById(R.id.servedFoodTextView);
+		TextView extras = (TextView) rootView.findViewById(R.id.servedExtrasTextView);
+		Button img = (Button) rootView.findViewById(R.id.thumbnailView);
 		
+		arrival.setText(protocol.getArrivalTime());
+		leaving.setText(protocol.getDepatureTime());
+		drinks.setText(protocol.getDrinks());
+		food.setText(protocol.getFood());
+		extras.setText(protocol.getExtras());
+		ratingBar.setRating(protocol.getRating());
+		if(!protocol.getPicturePath().equals(""))
+			protocol.getPicturePath();
+			//img.setBackground();
 	}
 
 	public void addListenerOnRatingBar() {     
@@ -244,6 +258,7 @@ public class PersonDetailFragment extends Fragment {
 					}
 				}
 				else {/*do nothing*/}
+				dao.updateProtocol(protocol);
 			}
 		});
     	
@@ -252,7 +267,7 @@ public class PersonDetailFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				removeformView(((Spinner)rootView.findViewById(R.id.categorySpinner)).getSelectedItem().toString(),
-						"userInput from Dialog");
+						"userInput from Dialog");				
 			}
 
 			private void removeformView(String s, String content) {
@@ -263,7 +278,7 @@ public class PersonDetailFragment extends Fragment {
 					if (!tv.getText().equals(""))
 					{
 						contentList = Arrays.asList(tv.getText().toString().split(","));
-						showDialog(contentList, tv);
+						showDialog(contentList, tv, 1);
 					}
 				}
 				else if (s.equals(getResources().getString(R.string.sFoodSpinnerItem).toString()))
@@ -272,7 +287,7 @@ public class PersonDetailFragment extends Fragment {
 					if (!tv.getText().equals(""))
 					{
 						contentList = Arrays.asList(tv.getText().toString().split(","));
-						showDialog(contentList, tv);
+						showDialog(contentList, tv, 2);
 					}
 				}
 				else if (s.equals(getResources().getString(R.string.sExtrasSpinnerItem).toString()))
@@ -281,13 +296,13 @@ public class PersonDetailFragment extends Fragment {
 					if (!tv.getText().equals(""))
 					{
 						contentList = Arrays.asList(tv.getText().toString().split(","));
-						showDialog(contentList, tv);
+						showDialog(contentList, tv, 3);
 					}
 				}
 				else {/*do nothing*/}
 			}
 
-			private void showDialog(final List<String> contentList, final TextView tv) {
+			private void showDialog(final List<String> contentList, final TextView tv, final int num) {
 				final String[] items = (String[]) contentList.toArray();
 	            final ArrayList<Integer> selectedItems = new ArrayList<Integer>();
 
@@ -328,6 +343,20 @@ public class PersonDetailFragment extends Fragment {
 		            		 	}
 		            	 }
 						 tv.setText(text);
+						 switch (num) {
+						case 1:
+							protocol.setDrinks(text);
+							break;
+						case 2:
+							protocol.setFood(text);
+							break;
+						case 3:
+							protocol.setExtras(text);
+							break;
+						default:
+							break;
+						}
+						dao.updateProtocol(protocol);
 		             }
 		         });            
 	            AlertDialog dialog = builder.create();//AlertDialog dialog; create like this outside onClick

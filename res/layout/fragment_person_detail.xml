@@ -27,27 +27,18 @@
 	        android:textSize="@dimen/dHeaderSize" 
 	        android:textStyle="bold|italic" />
 	
-	    <ImageView
+	    <Button
 	        android:id="@+id/thumbnailView"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
+	        android:layout_width="@dimen/dMaxPictureWidth"
+	        android:layout_height="@dimen/dMaxPictureHeight"
 	        android:layout_below="@+id/detailHeader"
 	        android:layout_centerHorizontal="true"
 	        android:layout_marginTop="@dimen/dMarginTop"
 	        android:adjustViewBounds="true"
+	        android:background="@drawable/placeholder"
 	        android:contentDescription="@string/sThumbnail"
 	        android:maxHeight="@dimen/dMaxPictureHeight"
-	        android:maxWidth="@dimen/dMaxPictureWidth"
 	        android:src="@drawable/placeholder" />
-	
-	    <TextView
-	        android:id="@+id/arrivalTextView"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_alignLeft="@+id/detailHeader"
-	        android:layout_alignTop="@+id/thumbnailView"
-	        android:text="@string/sArrival" 
-	        android:textSize="@dimen/dTextSize" />
 	
 	    <TextView
 	        android:id="@+id/arrivalDateTextView"
@@ -55,26 +46,8 @@
 	        android:layout_height="wrap_content"
 	        android:layout_alignLeft="@+id/arrivalTextView"
 	        android:layout_below="@+id/arrivalTextView"
-	        android:text="@string/sArrivalTime"
-	        android:textSize="@dimen/dTextSize" />
-	
-	    <TextView
-	        android:id="@+id/leavingTextView"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_alignLeft="@+id/leavingDateTextView"
-	        android:layout_alignTop="@+id/thumbnailView"
-	        android:text="@string/sLeaving"
-	        android:textSize="@dimen/dTextSize" />
-	
-	    <TextView
-	        android:id="@+id/leavingDateTextView"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_below="@+id/leavingTextView"
-	        android:layout_toLeftOf="@+id/leavingButton"
-	        android:text="@string/sLeavingTime"
-	        android:textSize="@dimen/dTextSize" />
+	        android:textSize="@dimen/dTextSize"
+	        android:textStyle="bold" />
 	
 	    <LinearLayout
 	        android:id="@+id/bonusLayout"
@@ -86,7 +59,6 @@
 	        android:layout_marginTop="@dimen/dMarginTop"
 	        android:background="@drawable/textfieldshape"
 	        android:gravity="center_horizontal"
-	        android:minHeight="50dp"
 	        android:minWidth="@dimen/dMinLayoutWidth"
 	        android:orientation="horizontal" >
 	        
@@ -117,22 +89,11 @@
 	        android:layout_alignBaseline="@+id/arrivalDateTextView"
 	        android:layout_alignBottom="@+id/arrivalDateTextView"
 	        android:layout_marginLeft="25dp"
-	        android:layout_toRightOf="@+id/arrivalDateTextView"
+	        android:layout_marginRight="25dp"
+	        android:layout_toLeftOf="@+id/thumbnailView"
 	        android:background="@drawable/buttonstyle"
 	        android:drawableTop="@drawable/ic_action_time"
 	        android:text="@string/sGetArrivalTime" />
-	    
-	    <Button
-	        android:id="@+id/leavingButton"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_alignBaseline="@+id/leavingDateTextView"
-	        android:layout_alignBottom="@+id/leavingDateTextView"
-	        android:layout_alignParentRight="true"
-	        android:layout_marginLeft="25dp"
-	        android:background="@drawable/buttonstyle"
-	        android:drawableTop="@drawable/ic_action_time"
-	        android:text="@string/sGetLeavingTime" />
 
 	    <LinearLayout
 	        android:id="@+id/drinksLayout"
@@ -142,7 +103,6 @@
 	        android:layout_centerHorizontal="true"
 	        android:layout_marginTop="@dimen/dMarginTop"
 	        android:background="@drawable/textfieldshape"
-	        android:minHeight="250dp"
 	        android:minWidth="@dimen/dMinLayoutWidth"
 	        android:orientation="vertical" >
 
@@ -175,7 +135,6 @@
 	        android:layout_below="@+id/drinksLayout"
 	        android:layout_marginTop="@dimen/dMarginTop"
 	        android:background="@drawable/textfieldshape"
-	        android:minHeight="200dp"
 	        android:minWidth="@dimen/dMinLayoutWidth"
 	        android:orientation="vertical" >
 
@@ -208,7 +167,6 @@
 	        android:layout_below="@+id/foodLayout"
 	        android:layout_marginTop="@dimen/dMarginTop"
 	        android:background="@drawable/textfieldshape"
-	        android:minHeight="325dp"
 	        android:minWidth="@dimen/dMinLayoutWidth"
 	        android:orientation="vertical" >
 
@@ -245,17 +203,6 @@
 	        android:gravity="center" />
 
 	    <Button
-	        android:id="@+id/addContentButton"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_alignLeft="@+id/arrivalDateTextView"
-	        android:layout_below="@+id/categorySpinner"
-	        android:layout_marginTop="@dimen/dMarginTop"
-	        android:background="@drawable/buttonstyle"
-	        android:drawableTop="@drawable/ic_action_new"
-	        android:text="@string/sAddContent" />
-
-	    <Button
 	        android:id="@+id/removeContentButton"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
@@ -265,6 +212,60 @@
 	        android:background="@drawable/buttonstyle"
 	        android:drawableTop="@drawable/ic_action_remove"
 	        android:text="@string/sRemoveContent" />
+
+	    <Button
+	        android:id="@+id/addContentButton"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignLeft="@+id/categorySpinner"
+	        android:layout_below="@+id/categorySpinner"
+	        android:layout_marginTop="25dp"
+	        android:background="@drawable/buttonstyle"
+	        android:drawableTop="@drawable/ic_action_new"
+	        android:text="@string/sAddContent" />
+
+	    <TextView
+	        android:id="@+id/arrivalTextView"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignTop="@+id/thumbnailView"
+	        android:layout_toLeftOf="@+id/arrivalButton"
+	        android:text="@string/sArrival"
+	        android:textSize="@dimen/dTextSize"
+	        android:textStyle="bold" />
+
+	    <TextView
+	        android:id="@+id/leavingDateTextView"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/leavingTextView"
+	        android:layout_marginLeft="25dp"
+	        android:layout_toRightOf="@+id/leavingButton"
+	        android:textSize="@dimen/dTextSize"
+	        android:textStyle="bold" />
+
+	    <TextView
+	        android:id="@+id/leavingTextView"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_toRightOf="@+id/leavingButton"
+	        android:layout_alignTop="@+id/thumbnailView"
+	        android:layout_marginLeft="25dp"
+	        android:text="@string/sLeaving"
+	        android:textSize="@dimen/dTextSize"
+	        android:textStyle="bold" />
+
+	    <Button
+	        android:id="@+id/leavingButton"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignBaseline="@+id/leavingDateTextView"
+	        android:layout_alignBottom="@+id/leavingDateTextView"
+	        android:layout_toRightOf="@+id/thumbnailView"
+	        android:background="@drawable/buttonstyle"
+	        android:drawableTop="@drawable/ic_action_time"
+	        android:text="@string/sGetLeavingTime" 
+	        android:layout_marginLeft="25dp"/>
 
 	</RelativeLayout>
 </ScrollView>

@@ -6,6 +6,7 @@ import java.util.List;
 import android.app.Activity;
 import android.os.Bundle;
 import android.app.ListFragment;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -44,7 +45,7 @@ public class PersonListFragment extends ListFragment {
     private int mActivatedPosition = ListView.INVALID_POSITION;
     
     public List<HostListItem> ITEMS = new ArrayList<HostListItem>();
-    private List<ProtocolContent> PROTOCOLLS = new ArrayList<ProtocolContent>();
+    public List<ProtocolContent> PROTOCOLLS = new ArrayList<ProtocolContent>();
     private DAO dao = null;
 
     /**
@@ -90,9 +91,9 @@ public class PersonListFragment extends ListFragment {
                 getActivity(),
                 android.R.layout.simple_list_item_activated_1,
                 android.R.id.text1,
-                ITEMS));       	
+                ITEMS));  
     }
-
+    
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -102,8 +103,6 @@ public class PersonListFragment extends ListFragment {
                 && savedInstanceState.containsKey(STATE_ACTIVATED_POSITION)) {
             setActivatedPosition(savedInstanceState.getInt(STATE_ACTIVATED_POSITION));
         }
-        if(PROTOCOLLS.size() > 0)
-        	this.setActivatedPosition(0);     
     }
 
     @Override
@@ -168,6 +167,22 @@ public class PersonListFragment extends ListFragment {
 
         mActivatedPosition = position;
     }
+    
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        //if the parent is in the landscape, make the first item selected
+            try {
+                if (PROTOCOLLS.size() > 0) {
+                	int position = 0;
+                	getListView().requestFocusFromTouch();
+                	getListView().setSelection(position);
+                	getListView().performItemClick(getListView().getAdapter().getView(position, null, null), position, position);
+                }
+            } catch (Exception e) {
+                Log.e("exception", e.toString());
+            }
+        }
 
 	public void updateHostList(HostListItem item) {
 		this.ITEMS.add(item);
