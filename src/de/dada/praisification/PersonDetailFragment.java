@@ -257,17 +257,13 @@ public class PersonDetailFragment extends Fragment {
 
 			private void removeformView(String s, String content) {
 				List<String> contentList = new ArrayList<String>();
-				ArrayList<Integer> popContent = new ArrayList<Integer>();
 				if (s.equals(getResources().getString(R.string.sDrinkSpinnerItem).toString()))
 				{
 					TextView tv = (TextView)rootView.findViewById(R.id.servedDrinksTextView);
 					if (!tv.getText().equals(""))
 					{
 						contentList = Arrays.asList(tv.getText().toString().split(","));
-						popContent = showDialog(contentList);
-						for(Integer i: popContent)
-							contentList.remove(i);
-						tv.setText(TextUtils.join(", ", contentList));
+						showDialog(contentList, tv);
 					}
 				}
 				else if (s.equals(getResources().getString(R.string.sFoodSpinnerItem).toString()))
@@ -276,10 +272,7 @@ public class PersonDetailFragment extends Fragment {
 					if (!tv.getText().equals(""))
 					{
 						contentList = Arrays.asList(tv.getText().toString().split(","));
-						popContent = showDialog(contentList);
-						for(Integer i: popContent)
-							contentList.remove(i);
-						tv.setText(TextUtils.join(", ", contentList));
+						showDialog(contentList, tv);
 					}
 				}
 				else if (s.equals(getResources().getString(R.string.sExtrasSpinnerItem).toString()))
@@ -288,18 +281,15 @@ public class PersonDetailFragment extends Fragment {
 					if (!tv.getText().equals(""))
 					{
 						contentList = Arrays.asList(tv.getText().toString().split(","));
-						popContent = showDialog(contentList);
-						for(Integer i: popContent)
-							contentList.remove(i);
-						tv.setText(TextUtils.join(", ", contentList));
+						showDialog(contentList, tv);
 					}
 				}
 				else {/*do nothing*/}
 			}
 
-			private ArrayList<Integer> showDialog(List<String> contentList) {
+			private void showDialog(final List<String> contentList, final TextView tv) {
 				final String[] items = (String[]) contentList.toArray();
-	            final ArrayList<Integer> seletedItems = new ArrayList<Integer>();
+	            final ArrayList<Integer> selectedItems = new ArrayList<Integer>();
 
 	            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 	            builder.setTitle(getResources().getString(R.string.sDialogDeleteHeader).toString());
@@ -311,12 +301,12 @@ public class PersonDetailFragment extends Fragment {
 				                 if (isChecked) 
 				                 {
 				                     // If the user checked the item, add it to the selected items
-				                     seletedItems.add(Integer.valueOf(indexSelected));
+				                     selectedItems.add(Integer.valueOf(indexSelected));
 				                 } 
-				                 else if (seletedItems.contains(indexSelected)) 
+				                 else if (selectedItems.contains(indexSelected)) 
 				                 {
 				                     // Else, if the item is already in the array, remove it
-				                     seletedItems.remove(Integer.valueOf(indexSelected));
+				                     selectedItems.remove(Integer.valueOf(indexSelected));
 				                 }
 				             }
 				         })
@@ -327,13 +317,21 @@ public class PersonDetailFragment extends Fragment {
 		             public void onClick(DialogInterface dialog, int id) {
 		                 //  Your code when user clicked on OK
 		                 //  You can write the code  to save the selected item here
-		            	 dialog.cancel();
+		            	 String text = "";
+		            	 for(String s: contentList){
+		            		 if (!selectedItems.contains(Integer.valueOf(contentList.indexOf(s))))
+		            		 	{
+		            		 		if (text.equals(""))
+		            		 		text = s;
+			            		 	else
+			            		 		text += ", " + s;
+		            		 	}
+		            	 }
+						 tv.setText(text);
 		             }
 		         });            
 	            AlertDialog dialog = builder.create();//AlertDialog dialog; create like this outside onClick
 	            dialog.show();
-
-				return seletedItems;
 			}
 		});
       }
