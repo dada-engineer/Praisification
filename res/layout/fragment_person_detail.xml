@@ -37,8 +37,7 @@
 	        android:adjustViewBounds="true"
 	        android:background="@drawable/placeholder"
 	        android:contentDescription="@string/sThumbnail"
-	        android:maxHeight="@dimen/dMaxPictureHeight"
-	        android:src="@drawable/placeholder" />
+	        android:maxHeight="@dimen/dMaxPictureHeight" />
 	
 	    <TextView
 	        android:id="@+id/arrivalDateTextView"

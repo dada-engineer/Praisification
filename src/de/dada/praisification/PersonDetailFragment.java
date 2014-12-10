@@ -1,13 +1,17 @@
 package de.dada.praisification;
 
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
-import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -20,6 +24,8 @@ import android.widget.RatingBar.OnRatingBarChangeListener;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -54,7 +60,12 @@ public class PersonDetailFragment extends Fragment {
     private Button leavingTimeButton;
     private Button addContentButton;
     private Button removeContentButton;
+    private Button imageButton;
     private DAO dao;
+
+	private String mCurrentPhotoPath;
+	
+	static final int REQUEST_TAKE_PHOTO = 1;
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
@@ -81,6 +92,7 @@ public class PersonDetailFragment extends Fragment {
         leavingTimeButton = (Button) rootView.findViewById(R.id.leavingButton);
         addContentButton = (Button) rootView.findViewById(R.id.addContentButton);
         removeContentButton = (Button) rootView.findViewById(R.id.removeContentButton);
+        imageButton = (Button) rootView.findViewById(R.id.thumbnailView);
         
         if (getArguments().containsKey(ARG_HOSTNAME)) {
         	TextView hostHeader = (TextView)(rootView.findViewById(R.id.detailHeader));
@@ -121,7 +133,6 @@ public class PersonDetailFragment extends Fragment {
 		TextView drinks = (TextView) rootView.findViewById(R.id.servedDrinksTextView);
 		TextView food = (TextView) rootView.findViewById(R.id.servedFoodTextView);
 		TextView extras = (TextView) rootView.findViewById(R.id.servedExtrasTextView);
-		Button img = (Button) rootView.findViewById(R.id.thumbnailView);
 		
 		arrival.setText(protocol.getArrivalTime());
 		leaving.setText(protocol.getDepatureTime());
@@ -129,9 +140,19 @@ public class PersonDetailFragment extends Fragment {
 		food.setText(protocol.getFood());
 		extras.setText(protocol.getExtras());
 		ratingBar.setRating(protocol.getRating());
-		if(!protocol.getPicturePath().equals(""))
-			protocol.getPicturePath();
-			//img.setBackground();
+		
+		if(!(protocol.getPicturePath().equals("")))
+		{
+			if(Drawable.createFromPath(protocol.getPicturePath()) != null)
+			{
+				imageButton.setBackground(Drawable.createFromPath(protocol.getPicturePath()));
+			}
+			else
+				protocol.setPicturePath("");
+		}
+		else
+			imageButton.setBackground(getResources().getDrawable(R.drawable.placeholder));
+		
 	}
 
 	public void addListenerOnRatingBar() {     
@@ -363,7 +384,108 @@ public class PersonDetailFragment extends Fragment {
 	            dialog.show();
 			}
 		});
+    	imageButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				if(protocol.getPicturePath().equalsIgnoreCase(""))
+				{
+					dispatchTakePictureIntent();
+					protocol.setPicturePath(mCurrentPhotoPath);
+					dao.updateProtocol(protocol);
+				}
+				else
+				{
+					AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+	            	builder.setMessage(getResources().getString(R.string.sImageButtonSecondHit).toString())
+	            	       .setPositiveButton(getResources().getString(R.string.sShow).toString(),
+	            	    		   new DialogInterface.OnClickListener() {
+	            	           public void onClick(DialogInterface dialog, int id) {
+	            	        	   Intent intent = new Intent(getActivity().getBaseContext(), ShowPictureActivity.class);
+	            	        	   intent.putExtra("PATH", protocol.getPicturePath());
+	            	        	   startActivityForResult(intent, 1);
+	            	           }
+	            	       })
+	            	       .setNegativeButton(getResources().getString(R.string.sRetake).toString(),
+	            	    		   new DialogInterface.OnClickListener() {
+	            	           public void onClick(DialogInterface dialog, int id) {
+	            	        	   dispatchTakePictureIntent();
+	           						protocol.setPicturePath(mCurrentPhotoPath);
+	           						dao.updateProtocol(protocol);
+	            	           }
+	            	       });
+	            	AlertDialog alert = builder.create();
+	            	alert.show();
+				}
+			}
+		});
       }
+    
+    private File createImageFile() throws IOException {
+        // Create an image file name
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).
+        		format(new Date());
+        String imageFileName = "IMG_" + timeStamp + "_";
+        File storageDir = Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_PICTURES);
+        File image = File.createTempFile(
+            imageFileName,  /* prefix */
+            ".jpg",         /* suffix */
+            storageDir      /* directory */
+        );
+
+        // Save a file: path for use with ACTION_VIEW intents
+        mCurrentPhotoPath = image.getAbsolutePath();
+        return image;
+    }
+    
+    private void dispatchTakePictureIntent() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        // Ensure that there's a camera activity to handle the intent
+        if (takePictureIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+            // Create the File where the photo should go
+            File photoFile = null;
+            try {
+                photoFile = createImageFile();
+            } catch (IOException ex) {
+                // Error occurred while creating the File
+            	AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            	builder.setMessage(getResources().getString(R.string.sError).toString())
+            	       .setCancelable(false)
+            	       .setPositiveButton(getResources().getString(R.string.sOK).toString(), 
+            	    		   new DialogInterface.OnClickListener() {
+            	           public void onClick(DialogInterface dialog, int id) {
+            	                dialog.cancel();
+            	           }
+            	       });
+            	AlertDialog alert = builder.create();
+            	alert.show();
+            }
+            // Continue only if the File was successfully created
+            if (photoFile != null) {
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT,
+                        Uri.fromFile(photoFile));
+                startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
+            }
+        }
+    }
+    
+    @Override
+    public void onActivityResult(int requestCode, int resultCode,
+            Intent data) {
+    	if(resultCode == 0)
+		{	
+			if(Drawable.createFromPath(protocol.getPicturePath()) == null)
+			{
+				File f =new File(mCurrentPhotoPath);
+				f.delete();
+	    		imageButton.setBackground(getResources().getDrawable(R.drawable.placeholder));
+	    		protocol.setPicturePath("");
+			}
+		}
+    	else
+    		imageButton.setBackground(Drawable.createFromPath(protocol.getPicturePath()));
+    }
     
     public void setProtocol(ProtocolContent protocol){
     	this.protocol = protocol;

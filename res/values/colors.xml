@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <color name="treeGreen">#107b0f</color>
     <color name="lightGreen">#479a47</color>
     <color name="lightestGreen">#94c494</color>
-    
+    <color name="black_overlay">#66000000</color>
+
 </resources>
