@@ -1,10 +1,20 @@
 package de.dada.praisification;
 
+import de.dada.praisification.hostlistitem.HostListItem;
+import de.dada.praisification.model.DAO;
+import de.dada.praisification.model.ProtocolContent;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
 
+import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.View;
+import android.widget.EditText;
 
 
 /**
@@ -16,8 +26,9 @@ import android.view.MenuItem;
  * This activity is mostly just a 'shell' activity containing nothing
  * more than a {@link PersonDetailFragment}.
  */
-public class PersonDetailActivity extends Activity {
-
+public class PersonDetailActivity extends Activity implements OnMenuItemClickListener {
+	
+	private DAO dao = new DAO(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,4 +75,36 @@ public class PersonDetailActivity extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
+ 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        MenuItem actionDeleteHost = menu.findItem(R.id.actionDeleteHost);
+        actionDeleteHost.setOnMenuItemClickListener(this);
+        
+        return super.onCreateOptionsMenu(menu);
+    }
+
+	@Override
+	public boolean onMenuItemClick(MenuItem item) {
+		switch (item.getItemId()) {
+        	case R.id.actionDeleteHost:
+        		if(((PersonDetailFragment) getFragmentManager()
+	                    .findFragmentById(R.id.person_detail_container)) != null)
+        		{
+        			ProtocolContent protocol = ((PersonDetailFragment) getFragmentManager()
+    	                    .findFragmentById(R.id.person_detail_container)).getProtocol();
+        			((PersonDetailFragment) getFragmentManager()
+    	                    .findFragmentById(R.id.person_detail_container)).getDao().deleteProtocol(protocol);
+            		Intent i = getBaseContext().getPackageManager()
+            	             .getLaunchIntentForPackage( getBaseContext().getPackageName() );
+            		i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            		startActivity(i);
+        		}
+        		break;
+        	default: break;
+			}
+		
+		return false;
+	}
 }

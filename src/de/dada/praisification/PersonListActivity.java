@@ -100,8 +100,12 @@ public class PersonListActivity extends Activity
         getMenuInflater().inflate(R.menu.menu, menu);
         MenuItem actionNewHost = menu.findItem(R.id.actionNewHost);
         actionNewHost.setOnMenuItemClickListener(this);
-        MenuItem actionDeleteHost = menu.findItem(R.id.actionDeleteHost);
-        actionDeleteHost.setOnMenuItemClickListener(this);
+        if(((PersonDetailFragment) getFragmentManager()
+                .findFragmentById(R.id.person_detail_container)) != null)
+        {
+        	MenuItem actionDeleteHost = menu.findItem(R.id.actionDeleteHost);
+        	actionDeleteHost.setOnMenuItemClickListener(this);
+        }
         
         return super.onCreateOptionsMenu(menu);
     }

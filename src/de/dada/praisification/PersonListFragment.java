@@ -173,7 +173,8 @@ public class PersonListFragment extends ListFragment {
         super.onActivityCreated(savedInstanceState);
         //if the parent is in the landscape, make the first item selected
             try {
-                if (PROTOCOLLS.size() > 0) {
+                if (PROTOCOLLS.size() > 0 && 
+                		getActivity().findViewById(R.id.person_detail_container) != null) {
                 	int position = 0;
                 	getListView().requestFocusFromTouch();
                 	getListView().setSelection(position);

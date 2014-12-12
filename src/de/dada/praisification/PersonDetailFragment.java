@@ -11,7 +11,6 @@ import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -76,10 +75,10 @@ public class PersonDetailFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        dao =  new DAO(getActivity());
+        setDao(new DAO(getActivity()));
         if (getArguments().containsKey(ARG_HOSTNAME)) {
-        	dao.open();
-        	protocol = dao.getProtocolByName(getArguments().getString(ARG_HOSTNAME));
+        	getDao().open();
+        	protocol = getDao().getProtocolByName(getArguments().getString(ARG_HOSTNAME));
         }
     }
 
@@ -161,7 +160,7 @@ public class PersonDetailFragment extends Fragment {
     		public void onRatingChanged(RatingBar ratingBar, float rating,
     			boolean fromUser) {
     			protocol.setRating(ratingBar.getRating());
-    			dao.updateProtocol(protocol);
+    			getDao().updateProtocol(protocol);
     		}
     	});
       }
@@ -176,7 +175,7 @@ public class PersonDetailFragment extends Fragment {
 				TextView dateTextView = (TextView) rootView.findViewById(R.id.arrivalDateTextView);
 				dateTextView.setText(sdf.format(date));
 				protocol.setArrivalTime(sdf.format(date));
-				dao.updateProtocol(protocol);
+				getDao().updateProtocol(protocol);
 			}
 		});
     	
@@ -189,7 +188,7 @@ public class PersonDetailFragment extends Fragment {
 				TextView dateTextView = (TextView) rootView.findViewById(R.id.leavingDateTextView);
 				dateTextView.setText(sdf.format(date));
 				protocol.setDepatureTime(sdf.format(date));
-				dao.updateProtocol(protocol);
+				getDao().updateProtocol(protocol);
 			}
 		});
     	
@@ -279,7 +278,7 @@ public class PersonDetailFragment extends Fragment {
 					}
 				}
 				else {/*do nothing*/}
-				dao.updateProtocol(protocol);
+				getDao().updateProtocol(protocol);
 			}
 		});
     	
@@ -377,7 +376,7 @@ public class PersonDetailFragment extends Fragment {
 						default:
 							break;
 						}
-						dao.updateProtocol(protocol);
+						getDao().updateProtocol(protocol);
 		             }
 		         });            
 	            AlertDialog dialog = builder.create();//AlertDialog dialog; create like this outside onClick
@@ -392,7 +391,7 @@ public class PersonDetailFragment extends Fragment {
 				{
 					dispatchTakePictureIntent();
 					protocol.setPicturePath(mCurrentPhotoPath);
-					dao.updateProtocol(protocol);
+					getDao().updateProtocol(protocol);
 				}
 				else
 				{
@@ -411,7 +410,7 @@ public class PersonDetailFragment extends Fragment {
 	            	           public void onClick(DialogInterface dialog, int id) {
 	            	        	   dispatchTakePictureIntent();
 	           						protocol.setPicturePath(mCurrentPhotoPath);
-	           						dao.updateProtocol(protocol);
+	           						getDao().updateProtocol(protocol);
 	            	           }
 	            	       });
 	            	AlertDialog alert = builder.create();
@@ -494,4 +493,12 @@ public class PersonDetailFragment extends Fragment {
     public ProtocolContent getProtocol(){
     	return protocol;
     }
+
+	public DAO getDao() {
+		return dao;
+	}
+
+	public void setDao(DAO dao) {
+		this.dao = dao;
+	}
 }
