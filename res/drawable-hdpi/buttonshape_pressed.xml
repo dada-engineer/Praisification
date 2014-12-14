@@ -7,12 +7,12 @@
 	/>
 	
 	<solid
-		android:color="#ddffffff"
+		android:color="#107b0f"
 	/>
 		
 	<stroke
 		android:width="1dp"
-		android:color="#ffffff"
+		android:color="#107b0f"
 	/>
 	
 	<padding

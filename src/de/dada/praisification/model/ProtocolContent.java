@@ -1,7 +1,5 @@
 package de.dada.praisification.model;
 
-import de.dada.praisification.R;
-
 /**
  * Helper class for providing sample content for user interfaces created by
  * Android template wizards.
@@ -17,7 +15,8 @@ public class ProtocolContent {
     private String arrivalTime;
     private String depatureTime;
     private String picturePath;
-    private float rating;
+    private float bonus;
+    private float treeRating;
     
     public ProtocolContent(String name) {
 		this.setName(name);
@@ -28,6 +27,7 @@ public class ProtocolContent {
 	    this.setDepatureTime("");
 	    this.setPicturePath("");
 	    this.setRating(0);
+	    this.setTreeRating(0);
 	}
 
 	public String getPicturePath() {
@@ -87,10 +87,18 @@ public class ProtocolContent {
 	}
 
 	public float getRating() {
-		return rating;
+		return bonus;
 	}
 
 	public void setRating(float f) {
-		this.rating = f;
+		this.bonus = f;
+	}
+
+	public float getTreeRating() {
+		return treeRating;
+	}
+
+	public void setTreeRating(float treerating) {
+		this.treeRating = treerating;
 	}
 }

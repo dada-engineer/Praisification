@@ -1,9 +1,304 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/person_detail_container"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/background"
-    tools:context="de.dada.praisification.PersonDetailActivity"
-    tools:ignore="MergeRootFrame" />
+    android:id="@+id/ScrollView01"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#E6E6E6" >
 
+	<RelativeLayout
+	    android:id="@+id/host_detail"
+	    style="?android:attr/textAppearanceLarge"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_marginBottom="30dp"
+	    android:layout_marginLeft="30dp"
+	    android:layout_marginRight="30dp"
+	    android:layout_marginTop="30dp"
+	    android:background="@drawable/background_flakes"
+	    android:padding="16dp"
+	    android:paddingBottom="25dp"
+	    android:textIsSelectable="true"
+	    tools:context="de.dada.praisification.PersonDetailFragment" >
+        
+	    <TextView
+	        android:id="@+id/detailHeader"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentLeft="true"
+	        android:layout_alignParentRight="true"
+	        android:layout_alignParentTop="true"
+	        android:gravity="center_horizontal"
+	        android:text="@string/sDeatilHeader"
+	        android:textColor="@color/treeGreen"
+	        android:textSize="@dimen/dHeaderSize"
+	        android:textStyle="bold|italic" />
+	
+	    <Button
+	        android:id="@+id/thumbnailView"
+	        android:layout_width="@dimen/dMaxPictureWidth"
+	        android:layout_height="@dimen/dMaxPictureHeight"
+	        android:layout_below="@+id/detailHeader"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginTop="@dimen/dMarginTop"
+	        android:adjustViewBounds="true"
+	        android:background="@drawable/placeholder"
+	        android:contentDescription="@string/sThumbnail"
+	        android:maxHeight="@dimen/dMaxPictureHeight" />
+	
+	    <LinearLayout
+	        android:id="@+id/bonusLayout"
+	        android:layout_width="@dimen/dMinLayoutWidth"
+	        android:layout_height="wrap_content"
+	        android:layout_alignLeft="@+id/extrasLayout"
+	        android:layout_alignRight="@+id/extrasLayout"
+	        android:layout_below="@+id/extrasLayout"
+	        android:layout_marginTop="@dimen/dMarginTop"
+	        android:background="@color/treeGreen"
+	        android:gravity="center_horizontal"
+	        android:minWidth="@dimen/dMinLayoutWidth"
+	        android:orientation="vertical" >
+	        
+	        <TextView
+	            android:id="@+id/bonusTextView"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center_vertical|center_horizontal"
+	            android:text="@string/sBonus"
+	            android:textColor="#ffffff"
+	            android:textSize="26sp"
+	            android:textStyle="bold|italic" />
+	        
+	        <RatingBar
+	            android:id="@+id/ratingBar"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center_horizontal"
+	            android:numStars="5"
+	            android:rating="0"
+	            android:stepSize="1.0" />
+	
+	    </LinearLayout>
+
+	    <LinearLayout
+	        android:id="@+id/drinksLayout"
+	        android:layout_width="@dimen/dMinLayoutWidth"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/removeContentButton"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginTop="@dimen/dMarginTop"
+	        android:background="@color/lightGreen"
+	        android:minWidth="@dimen/dMinLayoutWidth"
+	        android:orientation="vertical" >
+
+	        <TextView
+	            android:id="@+id/drinksLabel"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center_vertical"
+	            android:gravity="center_horizontal"
+	            android:text="@string/sDrinks"
+	            android:textColor="#ffffff"
+	            android:textSize="26sp"
+	            android:textStyle="bold|italic" />
+
+	        <TextView
+	            android:id="@+id/servedDrinksTextView"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center_vertical"
+	            android:layout_marginTop="15dp"
+	            android:gravity="center_horizontal"
+	            android:scrollHorizontally="false"
+	            android:textColor="#ffffff"
+	            android:textSize="@dimen/dTextSize" />
+
+	    </LinearLayout>
+
+	    <LinearLayout
+	        android:id="@+id/foodLayout"
+	        android:layout_width="@dimen/dMinLayoutWidth"
+	        android:layout_height="wrap_content"
+	        android:layout_alignLeft="@+id/drinksLayout"
+	        android:layout_below="@+id/drinksLayout"
+	        android:layout_marginTop="@dimen/dMarginTop"
+	        android:background="@color/treeGreen"
+	        android:minWidth="@dimen/dMinLayoutWidth"
+	        android:orientation="vertical" >
+
+	        <TextView
+	            android:id="@+id/foodLabel"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center_vertical"
+	            android:gravity="center_horizontal"
+	            android:text="@string/sFood"
+	            android:textColor="#ffffff"
+	            android:textSize="26sp"
+	            android:textStyle="bold|italic" />
+
+	        <TextView
+	            android:id="@+id/servedFoodTextView"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center_vertical"
+	            android:layout_marginTop="15dp"
+	            android:gravity="center_horizontal"
+	            android:scrollHorizontally="false"
+	            android:textColor="#ffffff"
+	            android:textSize="@dimen/dTextSize" />
+
+	    </LinearLayout>
+
+	    <LinearLayout
+	        android:id="@+id/extrasLayout"
+	        android:layout_width="@dimen/dMinLayoutWidth"
+	        android:layout_height="wrap_content"
+	        android:layout_alignLeft="@+id/foodLayout"
+	        android:layout_below="@+id/foodLayout"
+	        android:layout_marginTop="@dimen/dMarginTop"
+	        android:background="@color/lightGreen"
+	        android:minWidth="@dimen/dMinLayoutWidth"
+	        android:orientation="vertical" >
+
+	        <TextView
+	            android:id="@+id/extrasLabel"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center_vertical"
+	            android:gravity="center_horizontal"
+	            android:text="@string/sExtras"
+	            android:textColor="#ffffff"
+	            android:textSize="26sp"
+	            android:textStyle="bold|italic" />
+
+	        <TextView
+	            android:id="@+id/servedExtrasTextView"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center_vertical"
+	            android:layout_marginTop="15dp"
+	            android:gravity="center_horizontal"
+	            android:scrollHorizontally="false"
+	            android:textColor="#ffffff"
+	            android:textSize="@dimen/dTextSize" />
+
+	    </LinearLayout>
+
+	    <Spinner
+	        android:id="@+id/categorySpinner"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignLeft="@+id/thumbnailView"
+	        android:layout_alignRight="@+id/thumbnailView"
+	        android:layout_below="@+id/arrivalDateTextView"
+	        android:layout_marginTop="@dimen/dMarginTop"
+	        android:background="@color/treeGreen"
+	        android:gravity="center" />
+
+	    <Button
+	        android:id="@+id/removeContentButton"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignBaseline="@+id/addContentButton"
+	        android:layout_alignBottom="@+id/addContentButton"
+	        android:layout_alignRight="@+id/categorySpinner"
+	        android:background="@drawable/buttonstyle"
+	        android:drawableTop="@drawable/ic_action_remove"
+	        android:text="@string/sRemoveContent"
+	        android:textColor="#ffffff" />
+
+	    <Button
+	        android:id="@+id/addContentButton"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignLeft="@+id/categorySpinner"
+	        android:layout_below="@+id/categorySpinner"
+	        android:layout_marginTop="25dp"
+	        android:background="@drawable/buttonstyle"
+	        android:drawableTop="@drawable/ic_action_new"
+	        android:text="@string/sAddContent"
+	        android:textColor="#ffffff" />
+
+	    <Button
+	        android:id="@+id/leavingButton"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignRight="@+id/thumbnailView"
+	        android:layout_marginTop="25dp"
+	        android:layout_below="@+id/thumbnailView"
+	        android:background="@drawable/buttonstyle"
+	        android:drawableTop="@drawable/ic_action_time"
+	        android:text="@string/sLeaving"
+	        android:textColor="#ffffff" />
+
+	    <Button
+	        android:id="@+id/arrivalButton"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignLeft="@+id/thumbnailView"
+	        android:layout_below="@+id/thumbnailView"
+	        android:layout_marginTop="@dimen/dMarginTop"
+	        android:background="@drawable/buttonstyle"
+	        android:drawableTop="@drawable/ic_action_time"
+	        android:text="@string/sArrival"
+	        android:textColor="#ffffff" />
+
+	    <TextView
+	        android:id="@+id/arrivalDateTextView"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignLeft="@+id/arrivalButton"
+	        android:layout_below="@+id/arrivalButton"
+	        android:layout_marginTop="15dp"
+	        android:textColor="@color/treeGreen"
+	        android:textSize="@dimen/dTextSize"
+	        android:textStyle="bold" />
+
+	    <TextView
+	        android:id="@+id/leavingDateTextView"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignLeft="@+id/leavingButton"
+	        android:layout_below="@+id/leavingButton"
+	        android:layout_marginTop="15dp"
+	        android:textColor="@color/treeGreen"
+	        android:textSize="@dimen/dTextSize"
+	        android:textStyle="bold" />
+	    
+	    <LinearLayout
+	        android:id="@+id/treeRating"
+	        android:layout_width="@dimen/dMinLayoutWidth"
+	        android:layout_height="wrap_content"
+	        android:layout_alignLeft="@+id/bonusLayout"
+	        android:layout_alignRight="@+id/bonusLayout"
+	        android:layout_below="@+id/bonusLayout"
+	        android:layout_marginBottom="@dimen/dMarginTop"
+	        android:layout_marginTop="@dimen/dMarginTop"
+	        android:background="@color/lightGreen"
+	        android:gravity="center_horizontal"
+	        android:minWidth="@dimen/dMinLayoutWidth"
+	        android:orientation="vertical" >
+	        
+	        <TextView
+	            android:id="@+id/treeRatingTextView"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center_vertical|center_horizontal"
+	            android:text="@string/sTreeRating"
+	            android:textColor="#ffffff"
+	            android:textSize="26sp"
+	            android:textStyle="bold|italic" />
+	        
+	        <RatingBar
+	            android:id="@+id/treeRatingBar"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center_horizontal"
+	            android:numStars="5"
+	            android:rating="0"
+	            android:stepSize="1.0" />
+	
+	    </LinearLayout>
+
+	</RelativeLayout>
+</ScrollView>

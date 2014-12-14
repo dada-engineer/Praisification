@@ -19,11 +19,14 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int metaButtonBarStyle=0x7f010000;
     }
     public static final class color {
-        public static final int apptheme_color=0x7f040004;
+        public static final int apptheme_color=0x7f040007;
         public static final int black_overlay=0x7f040003;
+        public static final int lightGray=0x7f040005;
         public static final int lightGreen=0x7f040001;
+        public static final int lightestGray=0x7f040006;
         public static final int lightestGreen=0x7f040002;
         public static final int treeGreen=0x7f040000;
+        public static final int white=0x7f040004;
     }
     public static final class dimen {
         /** 
@@ -87,79 +90,63 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int apptheme_textfield_disabled_holo_light=0x7f02002b;
         public static final int apptheme_textfield_focused_holo_light=0x7f02002c;
         public static final int background=0x7f02002d;
-        public static final int buttonshape=0x7f02002e;
-        public static final int buttonshape_pressed=0x7f02002f;
-        public static final int buttonstyle=0x7f020030;
-        public static final int ic_action_discard=0x7f020031;
-        public static final int ic_action_new=0x7f020032;
-        public static final int ic_action_new_label=0x7f020033;
-        public static final int ic_action_remove=0x7f020034;
-        public static final int ic_action_save=0x7f020035;
+        public static final int background_flakes=0x7f02002e;
+        public static final int buttonshape=0x7f02002f;
+        public static final int buttonshape_pressed=0x7f020030;
+        public static final int buttonstyle=0x7f020031;
+        public static final int ic_action_discard=0x7f020032;
+        public static final int ic_action_new=0x7f020033;
+        public static final int ic_action_new_label=0x7f020034;
+        public static final int ic_action_remove=0x7f020035;
         public static final int ic_action_time=0x7f020036;
         public static final int ic_launcher=0x7f020037;
         public static final int placeholder=0x7f020038;
-        public static final int textfieldshape=0x7f020039;
     }
     public static final class id {
-        public static final int ScrollView01=0x7f090006;
-        public static final int actionDeleteHost=0x7f09001f;
-        public static final int actionNewHost=0x7f090020;
-        public static final int addContentButton=0x7f09001b;
-        public static final int arrivalButton=0x7f090010;
-        public static final int arrivalDateTextView=0x7f09000a;
-        public static final int arrivalTextView=0x7f09000b;
-        public static final int bonusLayout=0x7f09000c;
-        public static final int bonusTextView=0x7f09000e;
-        public static final int categorySpinner=0x7f090019;
-        public static final int detailHeader=0x7f090008;
-        public static final int drinksLabel=0x7f090012;
-        public static final int drinksLayout=0x7f090011;
-        public static final int editTextDialogUserInput=0x7f090005;
-        public static final int extrasLabel=0x7f090017;
-        public static final int extrasLayout=0x7f09000d;
-        public static final int foodLabel=0x7f090015;
-        public static final int foodLayout=0x7f090014;
-        public static final int fullscreen_content=0x7f090002;
-        public static final int fullscreen_content_controls=0x7f090003;
-        public static final int host_detail=0x7f090007;
-        public static final int layout_root=0x7f090004;
-        public static final int leavingButton=0x7f09001e;
-        public static final int leavingDateTextView=0x7f09001c;
-        public static final int leavingTextView=0x7f09001d;
-        public static final int person_detail_container=0x7f090000;
-        public static final int person_list=0x7f090001;
-        public static final int ratingBar=0x7f09000f;
-        public static final int removeContentButton=0x7f09001a;
-        public static final int servedDrinksTextView=0x7f090013;
-        public static final int servedExtrasTextView=0x7f090018;
-        public static final int servedFoodTextView=0x7f090016;
-        public static final int thumbnailView=0x7f090009;
+        public static final int ScrollView01=0x7f090000;
+        public static final int actionDeleteHost=0x7f09001e;
+        public static final int actionNewHost=0x7f09001f;
+        public static final int addContentButton=0x7f090013;
+        public static final int arrivalButton=0x7f090015;
+        public static final int arrivalDateTextView=0x7f090012;
+        public static final int bonusLayout=0x7f090004;
+        public static final int bonusTextView=0x7f090006;
+        public static final int categorySpinner=0x7f090011;
+        public static final int detailHeader=0x7f090002;
+        public static final int drinksLabel=0x7f09000a;
+        public static final int drinksLayout=0x7f090008;
+        public static final int editTextDialogUserInput=0x7f09001d;
+        public static final int extrasLabel=0x7f09000f;
+        public static final int extrasLayout=0x7f090005;
+        public static final int foodLabel=0x7f09000d;
+        public static final int foodLayout=0x7f09000c;
+        public static final int fullscreen_content=0x7f09001a;
+        public static final int fullscreen_content_controls=0x7f09001b;
+        public static final int host_detail=0x7f090001;
+        public static final int layout_root=0x7f09001c;
+        public static final int leavingButton=0x7f090014;
+        public static final int leavingDateTextView=0x7f090016;
+        public static final int ratingBar=0x7f090007;
+        public static final int removeContentButton=0x7f090009;
+        public static final int servedDrinksTextView=0x7f09000b;
+        public static final int servedExtrasTextView=0x7f090010;
+        public static final int servedFoodTextView=0x7f09000e;
+        public static final int thumbnailView=0x7f090003;
+        public static final int treeRating=0x7f090017;
+        public static final int treeRatingBar=0x7f090019;
+        public static final int treeRatingTextView=0x7f090018;
     }
     public static final class layout {
         public static final int activity_person_detail=0x7f030000;
-        /** 
-    Layout alias to replace the single-pane version of the layout with a
-    two-pane version on Large screens.
-
-    For more on layout aliases, see:
-    http://developer.android.com/training/multiscreen/screensizes.html#TaskUseAliasFilters
-    
-
-    Layout alias to replace the single-pane version of the layout with a
-    two-pane version on Large screens.
-
-    For more on layout aliases, see:
-    http://developer.android.com/training/multiscreen/screensizes.html#TaskUseAliasFilters
-    
-         */
         public static final int activity_person_list=0x7f030001;
-        public static final int activity_person_twopane=0x7f030002;
-        public static final int activity_show_picture=0x7f030003;
-        public static final int dialog=0x7f030004;
-        public static final int fragment_person_detail=0x7f030005;
+        public static final int activity_show_picture=0x7f030002;
+        public static final int dialog=0x7f030003;
+        public static final int list_item=0x7f030004;
+        public static final int spinner_item=0x7f030005;
     }
     public static final class menu {
-        public static final int menu=0x7f080000;
+        public static final int menu_detail=0x7f080000;
+        public static final int menu_list=0x7f080001;
     }
     public static final class string {
         public static final int app_name=0x7f060000;
@@ -197,6 +184,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int sSelectHint=0x7f06001a;
         public static final int sShow=0x7f060020;
         public static final int sThumbnail=0x7f06000c;
+        public static final int sTreeRating=0x7f060025;
         public static final int title_activity_show_picture=0x7f060023;
         public static final int title_person_detail=0x7f060001;
     }
@@ -214,7 +202,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
  API 14 theme customizations can go here. 
          */
         public static final int AppBaseTheme=0x7f070003;
-        public static final int AppTheme=0x7f070007;
+        public static final int AppTheme=0x7f070008;
+        public static final int AppTheme_ActionBar_TitleTextStyle=0x7f070007;
         /**  Backward-compatible version of ?android:attr/buttonBarStyle 
          */
         public static final int ButtonBar=0x7f070001;
@@ -225,7 +214,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int FullscreenTheme=0x7f070000;
         public static final int MyActionBar=0x7f070006;
         public static final int SpinnerAppTheme=0x7f070005;
-        public static final int _AppTheme=0x7f070008;
+        public static final int _AppTheme=0x7f070009;
     }
     public static final class styleable {
         /** 

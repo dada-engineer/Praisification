@@ -17,7 +17,7 @@ public class DAO {
   private String[] allColumns = { Database.COLUMN_ID,
 		  Database.COLUMN_NAME, Database.COLUMN_DRINKS, Database.COLUMN_FOOD,
 		  Database.COLUMN_EXTRAS, Database.COLUMN_ARRIVAL, Database.COLUMN_DEPARTURE,
-		  Database.COLUMN_PICTURE, Database.COLUMN_RATING};
+		  Database.COLUMN_PICTURE, Database.COLUMN_BONUS, Database.COLUMN_TREE};
 
   public DAO(Context context) {
     dbHelper = new Database(context);
@@ -31,16 +31,17 @@ public class DAO {
     dbHelper.close();
   }
 
-  public void createProtocol(ProtocolContent protocol) {
+  public void createProtocol(String hostname) {
     ContentValues values = new ContentValues();
-    values.put(Database.COLUMN_NAME, protocol.getName());
-    values.put(Database.COLUMN_DRINKS, protocol.getDrinks());
-    values.put(Database.COLUMN_FOOD, protocol.getFood());
-    values.put(Database.COLUMN_EXTRAS, protocol.getExtras());
-    values.put(Database.COLUMN_ARRIVAL, protocol.getArrivalTime());
-    values.put(Database.COLUMN_DEPARTURE, protocol.getDepatureTime());
-    values.put(Database.COLUMN_PICTURE, protocol.getPicturePath());
-    values.put(Database.COLUMN_RATING, protocol.getRating());
+    values.put(Database.COLUMN_NAME, hostname);
+    values.put(Database.COLUMN_DRINKS, "");
+    values.put(Database.COLUMN_FOOD, "");
+    values.put(Database.COLUMN_EXTRAS, "");
+    values.put(Database.COLUMN_ARRIVAL, "");
+    values.put(Database.COLUMN_DEPARTURE, "");
+    values.put(Database.COLUMN_PICTURE, "");
+    values.put(Database.COLUMN_BONUS, 0);
+    values.put(Database.COLUMN_TREE, 0);
     
     long insertId = db.insert(Database.TABLE_PROTOCOLLS, null,
         values);
@@ -100,7 +101,8 @@ public class DAO {
 	  values.put(Database.COLUMN_ARRIVAL, protocol.getArrivalTime());
 	  values.put(Database.COLUMN_DEPARTURE, protocol.getDepatureTime());
 	  values.put(Database.COLUMN_PICTURE, protocol.getPicturePath());
-	  values.put(Database.COLUMN_RATING, protocol.getRating());
+	  values.put(Database.COLUMN_BONUS, protocol.getRating());
+	  values.put(Database.COLUMN_TREE, protocol.getTreeRating());
 
 	  db.update(Database.TABLE_PROTOCOLLS, values, Database.COLUMN_NAME + 
 			  " =? ", new String [] {protocol.getName()});
@@ -114,7 +116,8 @@ public class DAO {
       String arrival = cursor.getString(cursor.getColumnIndex(Database.COLUMN_ARRIVAL));
       String departure = cursor.getString(cursor.getColumnIndex(Database.COLUMN_DEPARTURE));
       String picture = cursor.getString(cursor.getColumnIndex(Database.COLUMN_PICTURE));
-      float rating = cursor.getInt(cursor.getColumnIndex(Database.COLUMN_RATING));
+      float rating = cursor.getFloat(cursor.getColumnIndex(Database.COLUMN_BONUS));
+      float tree = cursor.getFloat(cursor.getColumnIndex(Database.COLUMN_TREE));
       
       protocol.setDrinks(drinks);
       protocol.setFood(food);
@@ -123,6 +126,7 @@ public class DAO {
       protocol.setDepatureTime(departure);
       protocol.setPicturePath(picture);
       protocol.setRating(rating);
+      protocol.setTreeRating(tree);
     return protocol;
   }
 } 

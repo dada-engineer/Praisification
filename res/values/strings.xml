@@ -38,5 +38,5 @@
     <string name="sImageButtonSecondHit">Show picture or take a new one?</string>
     <string name="title_activity_show_picture">ShowPictureActivity</string>
     <string name="sDeletedPicture">Image not found</string>
-
+	<string name="sTreeRating">Tree:</string>
 </resources>
