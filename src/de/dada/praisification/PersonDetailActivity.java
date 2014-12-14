@@ -437,7 +437,7 @@ public class PersonDetailActivity extends Activity implements OnMenuItemClickLis
 				else
 				{
 					AlertDialog.Builder builder = new AlertDialog.Builder(a);
-	            	builder.setMessage(getResources().getString(R.string.sImageButtonSecondHit).toString())
+	            	builder.setTitle(getResources().getString(R.string.sImageButtonSecondHit).toString())
 	            	       .setPositiveButton(getResources().getString(R.string.sShow).toString(),
 	            	    		   new DialogInterface.OnClickListener() {
 	            	           @Override

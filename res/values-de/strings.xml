@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Praisification</string>
+    <string name="title_person_detail">Protokoll</string>
+    <string name="sDeatilHeader">Zu Gast bei</string>
+    <string name="sHostName">Gastgeber</string>
+    <string name="sListHeader">Gastgeber:</string>
+    <string name="sArrival">Ankunft</string>
+    <string name="sLeaving">Abreise</string>
+    <string name="sDrinks">Getränke:</string>
+    <string name="sFood">Leckereien:</string>
+    <string name="sExtras">Extras:</string>
+    <string name="sBonus">Bonus:</string>
+    <string name="sThumbnail">Thumbnail</string>
+    <string name="sAddContent">Hinzufügen</string>
+    <string name="sRemoveContent">Löschen</string>
+    <string name="sPictureDescription">Gruppenfoto</string>
+    <string name="sActionNewHost">Neuen Gastgeber hinzufügen</string>
+    <string name="sActionDeleteHost">Protokoll löschen</string>
+    <string name="sNewHostDialogHint">Name des Gastgebers eintippen</string>
+    <string name="sOK">OK</string>
+    <string name="sCancel">Abbrechen</string>
+    <string name="sDrinkSpinnerItem">Getränk</string>
+    <string name="sFoodSpinnerItem">Leckerei</string>
+    <string name="sExtrasSpinnerItem">Extra</string>
+    <string name="sDialogDeleteHeader">Was soll gelöscht werden</string>
+    <string name="sError">Während der Aufnahme ist ein Fehler aufgetreten</string>
+    <string name="sShow">Ansehen</string>
+    <string name="sRetake">Aufnehmen</string>
+    <string name="sImageButtonSecondHit">Foto erneut aufnehmen oder ansehen</string>
+    <string name="title_activity_show_picture">Gruppenfoto</string>
+    <string name="sDeletedPicture">Foto nicht gefunden</string>
+	<string name="sTreeRating">Christbaum:</string>
+</resources>

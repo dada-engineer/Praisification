@@ -150,42 +150,35 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     }
     public static final class string {
         public static final int app_name=0x7f060000;
-        public static final int sActionDeleteHost=0x7f060016;
-        public static final int sActionNewHost=0x7f060015;
-        public static final int sActionSave=0x7f060014;
-        public static final int sAddContent=0x7f06000f;
+        public static final int sActionDeleteHost=0x7f06000e;
+        public static final int sActionNewHost=0x7f06000d;
+        public static final int sAddContent=0x7f06001d;
         public static final int sArrival=0x7f060005;
-        public static final int sArrivalTime=0x7f06000d;
-        public static final int sBonus=0x7f06000b;
-        public static final int sCancel=0x7f060019;
+        public static final int sBonus=0x7f06000a;
+        public static final int sCancel=0x7f060011;
         public static final int sDeatilHeader=0x7f060002;
-        public static final int sDeletedPicture=0x7f060024;
-        public static final int sDialogDeleteHeader=0x7f06001e;
-        public static final int sDone=0x7f06000a;
-        public static final int sDrinkSpinnerItem=0x7f06001b;
+        public static final int sDeletedPicture=0x7f06001b;
+        public static final int sDialogDeleteHeader=0x7f060015;
+        public static final int sDrinkSpinnerItem=0x7f060012;
         public static final int sDrinks=0x7f060007;
-        public static final int sError=0x7f06001f;
+        public static final int sError=0x7f060016;
         public static final int sExtras=0x7f060009;
-        public static final int sExtrasSpinnerItem=0x7f06001d;
+        public static final int sExtrasSpinnerItem=0x7f060014;
         public static final int sFood=0x7f060008;
-        public static final int sFoodSpinnerItem=0x7f06001c;
-        public static final int sGetArrivalTime=0x7f060011;
-        public static final int sGetLeavingTime=0x7f060012;
+        public static final int sFoodSpinnerItem=0x7f060013;
         public static final int sHostName=0x7f060003;
-        public static final int sImageButtonSecondHit=0x7f060022;
+        public static final int sImageButtonSecondHit=0x7f060019;
         public static final int sLeaving=0x7f060006;
-        public static final int sLeavingTime=0x7f06000e;
         public static final int sListHeader=0x7f060004;
-        public static final int sNewHostDialogHint=0x7f060017;
-        public static final int sOK=0x7f060018;
-        public static final int sPictureDescription=0x7f060013;
-        public static final int sRemoveContent=0x7f060010;
-        public static final int sRetake=0x7f060021;
-        public static final int sSelectHint=0x7f06001a;
-        public static final int sShow=0x7f060020;
-        public static final int sThumbnail=0x7f06000c;
-        public static final int sTreeRating=0x7f060025;
-        public static final int title_activity_show_picture=0x7f060023;
+        public static final int sNewHostDialogHint=0x7f06000f;
+        public static final int sOK=0x7f060010;
+        public static final int sPictureDescription=0x7f06000c;
+        public static final int sRemoveContent=0x7f06001e;
+        public static final int sRetake=0x7f060018;
+        public static final int sShow=0x7f060017;
+        public static final int sThumbnail=0x7f06000b;
+        public static final int sTreeRating=0x7f06001c;
+        public static final int title_activity_show_picture=0x7f06001a;
         public static final int title_person_detail=0x7f060001;
     }
     public static final class style {
@@ -202,7 +195,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
  API 14 theme customizations can go here. 
          */
         public static final int AppBaseTheme=0x7f070003;
-        public static final int AppTheme=0x7f070008;
+        public static final int AppTheme=0x7f07000a;
         public static final int AppTheme_ActionBar_TitleTextStyle=0x7f070007;
         /**  Backward-compatible version of ?android:attr/buttonBarStyle 
          */
@@ -210,11 +203,13 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         /**  Backward-compatible version of ?android:attr/buttonBarButtonStyle 
          */
         public static final int ButtonBarButton=0x7f070002;
+        public static final int CustomDialog=0x7f070008;
         public static final int FullscreenActionBarStyle=0x7f070004;
         public static final int FullscreenTheme=0x7f070000;
         public static final int MyActionBar=0x7f070006;
         public static final int SpinnerAppTheme=0x7f070005;
-        public static final int _AppTheme=0x7f070009;
+        public static final int TextAppearance_DialogWindowTitle=0x7f070009;
+        public static final int _AppTheme=0x7f07000b;
     }
     public static final class styleable {
         /** 

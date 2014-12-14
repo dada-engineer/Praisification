@@ -2,33 +2,24 @@
 <resources>
 
     <string name="app_name">Praisification</string>
-    <string name="title_person_detail">Person Detail</string>
+    <string name="title_person_detail">Protocol</string>
     <string name="sDeatilHeader">Visiting</string>
     <string name="sHostName">Host</string>
     <string name="sListHeader">Hosts:</string>
-    <string name="sArrival">Arrival:</string>
-    <string name="sLeaving">Leaving:</string>
+    <string name="sArrival">Arrival</string>
+    <string name="sLeaving">Leaving</string>
     <string name="sDrinks">Drinks:</string>
     <string name="sFood">Food:</string>
     <string name="sExtras">Extras:</string>
-    <string name="sDone">Done</string>
     <string name="sBonus">Bonus:</string>
     <string name="sThumbnail">Thumbnail</string>
-    <string name="sArrivalTime">Click on the Button</string>
-    <string name="sLeavingTime">Click on the Button</string>
-    <string name="sAddContent">Add</string>
-    <string name="sRemoveContent">Remove</string>
-    <string name="sGetArrivalTime">Time</string>
-    <string name="sGetLeavingTime">Time</string>
     <string name="sPictureDescription">Group picture</string>
-    <string name="sActionSave">Save</string>
     <string name="sActionNewHost">Add new host</string>
     <string name="sActionDeleteHost">Delete current host</string>
     <string name="sNewHostDialogHint">Type in new host name</string>
     <string name="sOK">OK</string>
     <string name="sCancel">Cancel</string>
-    <string name="sSelectHint">Select Item to Add</string>
-    <string name="sDrinkSpinnerItem">Drinks</string>
+    <string name="sDrinkSpinnerItem">Drink</string>
     <string name="sFoodSpinnerItem">Food</string>
     <string name="sExtrasSpinnerItem">Extras</string>
     <string name="sDialogDeleteHeader">Select the items you want to remove</string>
@@ -36,7 +27,9 @@
     <string name="sShow">Show</string>
     <string name="sRetake">Retake</string>
     <string name="sImageButtonSecondHit">Show picture or take a new one?</string>
-    <string name="title_activity_show_picture">ShowPictureActivity</string>
+    <string name="title_activity_show_picture">Group Picture</string>
     <string name="sDeletedPicture">Image not found</string>
 	<string name="sTreeRating">Tree:</string>
+	<string name="sAddContent">Add</string>
+    <string name="sRemoveContent">Remove</string>
 </resources>
