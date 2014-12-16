@@ -32,4 +32,5 @@
     <string name="title_activity_show_picture">Gruppenfoto</string>
     <string name="sDeletedPicture">Foto nicht gefunden</string>
 	<string name="sTreeRating">Christbaum:</string>
+	<string name="sErrorToast">Gastgeber konnte nicht erstellt werden: Name darf nicht leer sein!</string>
 </resources>

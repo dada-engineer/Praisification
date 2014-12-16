@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 import android.app.AlertDialog;
 import android.app.ListActivity;
 
@@ -96,17 +97,17 @@ public class PersonListActivity extends ListActivity
         		LayoutInflater li = LayoutInflater.from(this);
 				View promptsView = li.inflate(R.layout.dialog, null);
  
-				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+				AlertDialog.Builder builder = new AlertDialog.Builder(
 						this);
  
 				// set dialog.xml to alert dialog builder
-				alertDialogBuilder.setView(promptsView);
+				builder.setView(promptsView);
  
 				final EditText userInput = (EditText) promptsView
 						.findViewById(R.id.editTextDialogUserInput);
  
 				// set dialog message
-				alertDialogBuilder
+				builder
 					.setCancelable(false)
 					.setPositiveButton(getResources().getText(R.string.sOK),
 					  new DialogInterface.OnClickListener() {
@@ -115,11 +116,21 @@ public class PersonListActivity extends ListActivity
 							// get user input and set it to result
 							// edit text
 							hostname = userInput.getText().toString();
-							getDao().createProtocol(hostname);
-							updateHostList(hostname);
-							Intent detailIntent = new Intent(getApplicationContext(), PersonDetailActivity.class);
-					        detailIntent.putExtra(PersonDetailActivity.ARG_HOSTNAME, hostname);
-					        startActivityForResult(detailIntent, 0);
+							if (!hostname.equals(""))
+							{
+								getDao().createProtocol(hostname);
+								updateHostList(hostname);
+								Intent detailIntent = new Intent(getApplicationContext(), PersonDetailActivity.class);
+						        detailIntent.putExtra(PersonDetailActivity.ARG_HOSTNAME, hostname);
+						        startActivityForResult(detailIntent, 0);
+							}
+							else
+							{
+								Toast toast = Toast.makeText(getApplicationContext(),
+										getResources().getString(R.string.sErrorToast).toString(),
+										Toast.LENGTH_LONG);
+								toast.show();
+							}
 					    }
 					  })
 					.setNegativeButton(getResources().getText(R.string.sCancel),
@@ -131,10 +142,10 @@ public class PersonListActivity extends ListActivity
 					  });
  
 				// create alert dialog
-				AlertDialog alertDialog = alertDialogBuilder.create();
- 
+				AlertDialog dialog = builder.create();
+				dialog.setCanceledOnTouchOutside(true);
 				// show it
-				alertDialog.show();
+				dialog.show();
 				break;
         	default: break;
 			}
@@ -155,8 +166,7 @@ public class PersonListActivity extends ListActivity
             	
             setListAdapter(new ArrayAdapter<String>(
                     this,
-                    android.R.layout.simple_list_item_activated_1,
-                    android.R.id.text1,
+                    R.layout.list_item,
                     ITEMS));
             ((ArrayAdapter<String>) getListAdapter()).notifyDataSetChanged();
 		}

@@ -133,12 +133,14 @@ public class PersonDetailActivity extends Activity implements OnMenuItemClickLis
 	}
 	
 	private void loadViewContent() {
-    	TextView arrival = (TextView) this.findViewById(R.id.arrivalDateTextView);
+		Drawable background = (Drawable) (this.findViewById(R.id.host_detail).getBackground());
+		TextView arrival = (TextView) this.findViewById(R.id.arrivalDateTextView);
 		TextView leaving = (TextView) this.findViewById(R.id.leavingDateTextView);
 		TextView drinks = (TextView) this.findViewById(R.id.servedDrinksTextView);
 		TextView food = (TextView) this.findViewById(R.id.servedFoodTextView);
 		TextView extras = (TextView) this.findViewById(R.id.servedExtrasTextView);
-
+		
+		background.setAlpha(90);
         LayerDrawable stars = (LayerDrawable) ratingBar.getProgressDrawable();
         stars.getDrawable(2).setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_ATOP);
         stars.getDrawable(1).setColorFilter(getResources().getColor(R.color.lightGray), PorterDuff.Mode.SRC_ATOP);
@@ -239,16 +241,16 @@ public class PersonDetailActivity extends Activity implements OnMenuItemClickLis
 				LayoutInflater li = LayoutInflater.from(a);
 				View promptsView = li.inflate(R.layout.dialog, null);
  
-				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(a);
+				AlertDialog.Builder builder = new AlertDialog.Builder(a);
  
 				// set dialog.xml to alert dialog builder
-				alertDialogBuilder.setView(promptsView);
+				builder.setView(promptsView);
  
 				final EditText userInput = (EditText) promptsView
 						.findViewById(R.id.editTextDialogUserInput);
  
 				// set dialog message
-				alertDialogBuilder
+				builder
 					.setCancelable(false)
 					.setPositiveButton(getResources().getText(R.string.sOK),
 					  new DialogInterface.OnClickListener() {
@@ -260,7 +262,7 @@ public class PersonDetailActivity extends Activity implements OnMenuItemClickLis
 								userInput.getText().toString());
 					    }
 					  })
-					.setNegativeButton("Cancel",
+					.setNegativeButton(R.string.sCancel,
 					  new DialogInterface.OnClickListener() {
 					    @Override
 						public void onClick(DialogInterface dialog,int id) {
@@ -269,10 +271,11 @@ public class PersonDetailActivity extends Activity implements OnMenuItemClickLis
 					  });
  
 				// create alert dialog
-				AlertDialog alertDialog = alertDialogBuilder.create();
+				AlertDialog dialog = builder.create();
+				dialog.setCanceledOnTouchOutside(true);
  
 				// show it
-				alertDialog.show();
+				dialog.show();
 			}
 
 			private void pushToView(String s, String content) {
@@ -368,8 +371,11 @@ public class PersonDetailActivity extends Activity implements OnMenuItemClickLis
 	            final ArrayList<Integer> selectedItems = new ArrayList<Integer>();
 
 	            AlertDialog.Builder builder = new AlertDialog.Builder(a);
-	            builder.setTitle(getResources().getString(R.string.sDialogDeleteHeader).toString());
-	            builder.setMultiChoiceItems(items, null,
+	            LayoutInflater li = LayoutInflater.from(a);
+				View promptsView = li.inflate(R.layout.remove_dialog, null);
+				
+	            builder.setView(promptsView)
+	            	.setMultiChoiceItems(items, null,
 	                    new DialogInterface.OnMultiChoiceClickListener() {
 				             @Override
 				             public void onClick(DialogInterface dialog, int indexSelected,
@@ -421,6 +427,7 @@ public class PersonDetailActivity extends Activity implements OnMenuItemClickLis
 		             }
 		         });            
 	            AlertDialog dialog = builder.create();//AlertDialog dialog; create like this outside onClick
+	            dialog.setCanceledOnTouchOutside(true);
 	            dialog.show();
 			}
 		});
@@ -456,8 +463,9 @@ public class PersonDetailActivity extends Activity implements OnMenuItemClickLis
 	           						dao.updateProtocol(protocol);
 	            	           }
 	            	       });
-	            	AlertDialog alert = builder.create();
-	            	alert.show();
+	            	AlertDialog dialog = builder.create();
+	            	dialog.setCanceledOnTouchOutside(true);
+	            	dialog.show();
 				}
 			}
 		});
@@ -501,8 +509,9 @@ public class PersonDetailActivity extends Activity implements OnMenuItemClickLis
             	                dialog.cancel();
             	           }
             	       });
-            	AlertDialog alert = builder.create();
-            	alert.show();
+            	AlertDialog dialog = builder.create();
+            	dialog.setCanceledOnTouchOutside(true);
+            	dialog.show();
             }
             // Continue only if the File was successfully created
             if (photoFile != null) {

@@ -32,4 +32,5 @@
 	<string name="sTreeRating">Tree:</string>
 	<string name="sAddContent">Add</string>
     <string name="sRemoveContent">Remove</string>
+    <string name="sErrorToast">Couldn not create new host: Hostname must not be empty!</string>
 </resources>
