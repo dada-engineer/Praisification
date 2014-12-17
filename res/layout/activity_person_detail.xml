@@ -68,6 +68,11 @@
 	            android:textSize="26sp"
 	            android:textStyle="bold|italic" />
 	        
+	        <View
+        		android:layout_width="fill_parent"
+        		android:layout_height="1dp"
+        		android:background="@color/white" />
+	        
 	        <RatingBar
 	            android:id="@+id/ratingBar"
 	            android:layout_width="wrap_content"
@@ -100,6 +105,11 @@
 	            android:textColor="#ffffff"
 	            android:textSize="26sp"
 	            android:textStyle="bold|italic" />
+	        
+	        <View
+        		android:layout_width="fill_parent"
+        		android:layout_height="1dp"
+        		android:background="@color/white" />
 
 	        <TextView
 	            android:id="@+id/servedDrinksTextView"
@@ -110,7 +120,8 @@
 	            android:gravity="center_horizontal"
 	            android:scrollHorizontally="false"
 	            android:textColor="#ffffff"
-	            android:textSize="@dimen/dTextSize" />
+	            android:textSize="@dimen/dTextSize"  
+	            android:layout_marginBottom="5dp" />
 
 	    </LinearLayout>
 
@@ -135,6 +146,11 @@
 	            android:textColor="#ffffff"
 	            android:textSize="26sp"
 	            android:textStyle="bold|italic" />
+	        
+	        <View
+        		android:layout_width="fill_parent"
+        		android:layout_height="1dp"
+        		android:background="@color/white" />
 
 	        <TextView
 	            android:id="@+id/servedFoodTextView"
@@ -145,7 +161,8 @@
 	            android:gravity="center_horizontal"
 	            android:scrollHorizontally="false"
 	            android:textColor="#ffffff"
-	            android:textSize="@dimen/dTextSize" />
+	            android:textSize="@dimen/dTextSize" 
+	            android:layout_marginBottom="5dp" />
 
 	    </LinearLayout>
 
@@ -170,6 +187,11 @@
 	            android:textColor="#ffffff"
 	            android:textSize="26sp"
 	            android:textStyle="bold|italic" />
+	        
+	        <View
+        		android:layout_width="fill_parent"
+        		android:layout_height="1dp"
+        		android:background="@color/white" />
 
 	        <TextView
 	            android:id="@+id/servedExtrasTextView"
@@ -180,7 +202,8 @@
 	            android:gravity="center_horizontal"
 	            android:scrollHorizontally="false"
 	            android:textColor="#ffffff"
-	            android:textSize="@dimen/dTextSize" />
+	            android:textSize="@dimen/dTextSize" 
+	            android:layout_marginBottom="5dp" />
 
 	    </LinearLayout>
 
@@ -288,6 +311,11 @@
 	            android:textColor="#ffffff"
 	            android:textSize="26sp"
 	            android:textStyle="bold|italic" />
+	        
+	        <View
+        		android:layout_width="fill_parent"
+        		android:layout_height="1dp"
+        		android:background="@color/white" />
 	        
 	        <RatingBar
 	            android:id="@+id/treeRatingBar"

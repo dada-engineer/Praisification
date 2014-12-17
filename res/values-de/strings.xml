@@ -18,7 +18,7 @@
     <string name="sPictureDescription">Gruppenfoto</string>
     <string name="sActionNewHost">Neuen Gastgeber hinzufügen</string>
     <string name="sActionDeleteHost">Protokoll löschen</string>
-    <string name="sNewHostDialogHint">Name des Gastgebers eintippen</string>
+    <string name="sNewHostDialogHint">Elementtext eingeben</string>
     <string name="sOK">OK</string>
     <string name="sCancel">Abbrechen</string>
     <string name="sDrinkSpinnerItem">Getränk</string>
@@ -33,4 +33,16 @@
     <string name="sDeletedPicture">Foto nicht gefunden</string>
 	<string name="sTreeRating">Christbaum:</string>
 	<string name="sErrorToast">Gastgeber konnte nicht erstellt werden: Name darf nicht leer sein!</string>
+	<string name="sActionExportAll">Alle Protokolle als PDF exportieren</string>
+    <string name="sActionExportToast">Protokolle gespeichert unter:</string>
+    <string name="sPDFTitle">Protokolle Christbaumloben</string>
+    <string name="sNameColumn">Name</string>
+	<string name="sDrinksColumn">Getränke</string>
+	<string name="sFoodColumn">Leckereien</string>
+    <string name="sExtrasColumn">Extras</string>
+    <string name="sBonusColumn">Bonus</string>
+    <string name="sTreeColumn">Christbaum Bewertung</string>
+    <string name="sArrivalColumn">Ankunft</string>
+    <string name="sDepatureColumn">Abreise</string>
+    <string name="sNothingToExport">Keine Protokolle zum exportieren</string>
 </resources>

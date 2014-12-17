@@ -16,7 +16,7 @@
     <string name="sPictureDescription">Group picture</string>
     <string name="sActionNewHost">Add new host</string>
     <string name="sActionDeleteHost">Delete current host</string>
-    <string name="sNewHostDialogHint">Type in new host name</string>
+    <string name="sNewHostDialogHint">Enter new element</string>
     <string name="sOK">OK</string>
     <string name="sCancel">Cancel</string>
     <string name="sDrinkSpinnerItem">Drink</string>
@@ -33,4 +33,16 @@
 	<string name="sAddContent">Add</string>
     <string name="sRemoveContent">Remove</string>
     <string name="sErrorToast">Couldn not create new host: Hostname must not be empty!</string>
+    <string name="sActionExportAll">Export all Protocolls to PDF</string>
+    <string name="sActionExportToast">Exported to:</string>
+    <string name="sPDFTitle">X-Mas Tree Praisification Protocolls</string>
+    <string name="sNameColumn">Name</string>
+	<string name="sDrinksColumn">Drinks</string>
+	<string name="sFoodColumn">Food</string>
+    <string name="sExtrasColumn">Extras</string>
+    <string name="sBonusColumn">Bonus</string>
+    <string name="sTreeColumn">Tree Rating</string>
+    <string name="sArrivalColumn">Arrival</string>
+    <string name="sDepatureColumn">Departure</string>
+    <string name="sNothingToExport">No protocolls to export</string>
 </resources>

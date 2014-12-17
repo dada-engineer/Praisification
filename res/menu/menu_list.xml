@@ -6,5 +6,12 @@
        android:icon="@drawable/ic_action_new_label"
        android:visible="true"
        android:enabled="true" />
+     
+     <item android:id="@+id/actionExport"
+       android:title="@string/sActionExportAll"
+       android:showAsAction="ifRoom"
+       android:icon="@drawable/ic_action_import_export"
+       android:visible="true"
+       android:enabled="true" />
      	
 </menu>

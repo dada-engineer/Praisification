@@ -299,12 +299,12 @@ public class PersonDetailActivity extends Activity implements OnMenuItemClickLis
 					if (tv.getText().equals(""))
 					{
 						tv.setText(tv.getText() + content);
-						protocol.setDrinks(tv.getText().toString());
+						protocol.setFood(tv.getText().toString());
 					}
 					else
 					{
 						tv.setText(tv.getText() + ", " + content);
-						protocol.setDrinks(tv.getText().toString());
+						protocol.setFood(tv.getText().toString());
 					}
 				}
 				else if (s.equals(getResources().getString(R.string.sExtrasSpinnerItem).toString()))
@@ -313,12 +313,12 @@ public class PersonDetailActivity extends Activity implements OnMenuItemClickLis
 					if (tv.getText().equals(""))
 					{
 						tv.setText(tv.getText() + content);
-						protocol.setDrinks(tv.getText().toString());
+						protocol.setExtras(tv.getText().toString());
 					}
 					else
 					{
 						tv.setText(tv.getText() + ", " + content);
-						protocol.setDrinks(tv.getText().toString());
+						protocol.setExtras(tv.getText().toString());
 					}
 				}
 				else {/*do nothing*/}
@@ -458,7 +458,7 @@ public class PersonDetailActivity extends Activity implements OnMenuItemClickLis
 	            	    		   new DialogInterface.OnClickListener() {
 	            	           @Override
 							public void onClick(DialogInterface dialog, int id) {
-	            	        	   dispatchTakePictureIntent();
+	            	        	    dispatchTakePictureIntent();
 	           						protocol.setPicturePath(mCurrentPhotoPath);
 	           						dao.updateProtocol(protocol);
 	            	           }
