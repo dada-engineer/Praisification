@@ -165,6 +165,12 @@ public class PersonListActivity extends ListActivity
         				e.printStackTrace();
         			}
         		}
+        		else
+        		{
+        			Toast toast = Toast.makeText(getApplicationContext(),
+        					getResources().getString(R.string.sNothingToExport).toString(), Toast.LENGTH_LONG);
+        			toast.show();
+        		}
         	default: break;
 			}
 		
