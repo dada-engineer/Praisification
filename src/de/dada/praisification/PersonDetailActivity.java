@@ -478,6 +478,7 @@ public class PersonDetailActivity extends Activity implements OnMenuItemClickLis
         String imageFileName = "IMG_" + timeStamp + "_";
         File storageDir = Environment.getExternalStoragePublicDirectory(
                 Environment.DIRECTORY_PICTURES);
+        storageDir.mkdirs();
         File image = File.createTempFile(
             imageFileName,  /* prefix */
             ".jpg",         /* suffix */
@@ -486,6 +487,7 @@ public class PersonDetailActivity extends Activity implements OnMenuItemClickLis
 
         // Save a file: path for use with ACTION_VIEW intents
         mCurrentPhotoPath = image.getAbsolutePath();
+        System.out.println(mCurrentPhotoPath);
         return image;
     }
     
